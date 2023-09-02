@@ -5,7 +5,7 @@
       <h3 class="text-3xl font-medium text-gray-700 mb-4 md:mb-0 md:mr-4">New Convert</h3>
 
       <router-link
-        to="/add-new-convert"
+        to="/add-job"
         class="px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-pry rounded-md hover:bg-pry focus:outline-none focus:bg-pry"
       >
         Add Job
