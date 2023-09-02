@@ -2,48 +2,33 @@
   <div>
     <!-- Heading and Add button -->
     <div class="flex flex-col md:flex-row md:justify-between">
-      <h3 class="text-3xl font-medium text-gray-700 mb-4 md:mb-0 md:mr-4">
-        Second Timer
-      </h3>
+      <h3 class="text-3xl font-medium text-gray-700 mb-4 md:mb-0 md:mr-4">New Convert</h3>
 
       <router-link
-        to="/add-second-timer"
-        class="px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-600 rounded-md hover:bg-indigo-500 focus:outline-none focus:bg-indigo-500"
+        to="/add-new-convert"
+        class="px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-pry rounded-md hover:bg-pry focus:outline-none focus:bg-pry"
       >
-        Add Second Timer
+        Add Job
       </router-link>
     </div>
 
-    <!-- First Timers -->
+    <!-- Filter Section-->
     <div class="mt-8">
       <div class="mt-6">
-        <h2 class="text-xl font-semibold leading-tight text-gray-700">All Dates</h2>
+        <h2 class="text-xl font-semibold leading-tight text-gray-700">All Categories</h2>
 
         <!-- Top Buttons -->
         <div class="flex flex-col mt-3 sm:flex-row">
           <div class="flex">
-            <!-- Date Filter -->
-            <div class="relative">
-              <select
-                v-model="selectedDateFilter"
-                class="cursor-pointer block w-full h-full px-4 py-2 pr-8 leading-tight text-gray-700 bg-white border border-gray-400 rounded-1 appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
-              >
-                <option value="All">All Dates</option>
-                <option v-for="date in dateFilters" :key="date" :value="date">
-                  {{ date }}
-                </option>
-              </select>
-            </div>
-
             <!-- Zone Filter -->
             <div class="relative">
               <select
                 v-model="selectedZone"
                 class="cursor-pointer block w-full h-full px-4 py-2 pr-8 leading-tight text-gray-700 bg-white border border-gray-400 rounded-2 appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
               >
-                <option value="All">All Zones</option>
-                <option v-for="zone in zones" :key="zone" :value="zone">
-                  {{ zone }}
+                <option value="All">All Jobs</option>
+                <option v-for="category in categories" :key="category" :value="category">
+                  {{ category }}
                 </option>
               </select>
             </div>
@@ -70,7 +55,7 @@
             </span>
 
             <input
-              placeholder="Search"
+              placeholder="Search for a Company"
               class="block w-full py-2 pl-8 pr-6 text-sm text-gray-700 placeholder-gray-400 bg-white border border-b border-gray-400 rounded-l rounded-r appearance-none sm:rounded-l-none focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none"
             />
           </div>
@@ -90,36 +75,37 @@
                     <th
                       class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50"
                     >
-                      Name
+                      Company
                     </th>
                     <th
                       class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50"
                     >
-                      Phone No.
+                      Role
+                    </th>
+
+                    <th
+                      class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50"
+                    >
+                      Category
                     </th>
                     <th
                       class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50"
                     >
-                      Date
-                    </th>
-                    <th
-                      class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50"
-                    >
-                      Zone
+                      Salary
                     </th>
                     <th class="px-6 py-3 border-b border-gray-200 bg-gray-50" />
                   </tr>
                 </thead>
 
                 <tbody class="bg-white">
-                  <template v-if="secondTimers.length > 0">
-                    <tr v-for="secondTimer in secondTimers" :key="secondTimer.id">
+                  <template v-if="newConverts.length > 0">
+                    <tr v-for="newConvert in newConverts" :key="newConvert.id">
                       <!-- Name Data -->
                       <td class="px-3 py-4 border-b border-gray-200 whitespace-nowrap">
                         <div>
                           <div class="ml-3">
                             <div class="text-sm font-medium leading-5 text-gray-900">
-                              <span>{{ secondTimer.name }}</span>
+                              <span>{{ newConvert.name }}</span>
                             </div>
                           </div>
                         </div>
@@ -128,23 +114,22 @@
                       <!-- Number Data -->
                       <td class="px-6 py-4 border-b border-gray-200 whitespace-nowrap">
                         <div class="text-sm leading-5 text-gray-500">
-                          <p>{{ secondTimer.number }}</p>
+                          <p>{{ newConvert.number }}</p>
                         </div>
                       </td>
 
                       <!-- Date Data -->
-                      <td class="px-6 py-4 border-b whitespace-nowrap">
-                        <span
-                          class="inline-flex px-2 border-gray-500 text-gray-500 whitespace-nowra"
-                          >{{ secondTimer.secondDate }}</span
-                        >
+                      <td class="px-6 py-4 border-b border-gray-200 whitespace-nowrap">
+                        <div class="text-sm leading-5 text-gray-500">
+                          <p>{{ newConvert.thirdDate }}</p>
+                        </div>
                       </td>
 
                       <!-- Zone data  -->
                       <td
                         class="px-6 py-4 text-sm leading-5 text-gray-500 border-b border-gray-200 whitespace-nowrap"
                       >
-                        <span>{{ secondTimer.zone }}</span>
+                        <span>{{ newConvert.zone }}</span>
                       </td>
 
                       <td
@@ -152,10 +137,10 @@
                       >
                         <router-link
                           :to="{
-                            name: 'SecondTimerDetails',
-                            params: { id: secondTimer.id },
+                            name: 'NewConvertDetails',
+                            params: { id: newConvert.id },
                           }"
-                          class="cursor-pointer text-indigo-600 hover:text-indigo-900"
+                          class="cursor-pointer text-pry hover:text-pry"
                         >
                           View
                         </router-link>
@@ -165,11 +150,15 @@
                   <template v-else>
                     <tr>
                       <td
-                        :colspan="zones.length + 3"
+                        :colspan="zones.length + 2"
                         class="py-4 text-center text-gray-500"
                       >
-                        No data to display for
-                        {{ selectedZone === "All" ? "any zone" : selectedZone }}
+                        No jobs
+                        {{
+                          selectedZone === "All"
+                            ? "to display"
+                            : "to display in your " + selectedZone + " category"
+                        }}.
                       </td>
                     </tr>
                   </template>
@@ -186,14 +175,12 @@
 <script>
 import { onSnapshot, collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "../main";
-
 export default {
   data() {
     return {
       // Array to hold member details from firestore
-      secondTimers: [],
+      newConverts: [],
       selectedZone: "All",
-      selectedDateFilter: "All",
       zones: [
         "Adeniran Ogunsanya",
         "Ago / Okota",
@@ -215,14 +202,6 @@ export default {
         "YabaTech",
         "Others",
       ],
-      dateFilters: [
-        "Today",
-        "Previous Service",
-        "This Month",
-        "Last Month",
-        "This Year",
-        "Last Year",
-      ],
     };
   },
 
@@ -233,28 +212,26 @@ export default {
 
   watch: {
     selectedZone(newZone) {
-      this.fetchMembers(newZone, this.selectedDateFilter);
-    },
-    selectedDateFilter(newDateFilter) {
-      this.fetchMembers(this.selectedZone, newDateFilter);
+      this.fetchMembers(newZone);
     },
   },
 
   methods: {
     // Fetch first Timers
-    async fetchMembers(zone = "All") {
+    async fetchMembers(zone = "All", dateFilter = "All") {
       try {
-        const membersCollection = collection(db, "second-timer");
+        const membersCollection = collection(db, "new-convert");
         let querySnapshot;
 
         if (zone === "All") {
-          querySnapshot = await getDocs(membersCollection);
+          const q = query(membersCollection);
+          querySnapshot = await getDocs(q);
         } else {
           const q = query(membersCollection, where("zone", "==", zone));
           querySnapshot = await getDocs(q);
         }
 
-        this.secondTimers = querySnapshot.docs.map((doc) => ({
+        this.newConverts = querySnapshot.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
         }));
@@ -267,27 +244,27 @@ export default {
     exportCSV() {
       // Naming Download form
       const zoneName = this.selectedZone === "All" ? "All Zones" : this.selectedZone;
-      const fileName = `${zoneName} second-timers.csv`;
+      const fileName = `${zoneName} new-converts.csv`;
 
       // Order of fields in CSV
-      const columnOrder = ["name", "number", "address", "zone", "secondDate"];
+      const columnOrder = ["name", "number", "address", "thirdDate", "zone"];
 
       // Mapping / renaming fields from Firestore to header name on CSV
       const fieldDisplayNames = {
         name: "Name",
         number: "Phone Number",
         address: "Address",
+        thirdDate: "Date",
         zone: "Zone",
-        secondDate: "Date",
       };
 
       const csvContent =
         "data:text/csv;charset=utf-8," +
         columnOrder.map((column) => fieldDisplayNames[column]).join(",") +
         "\n" +
-        this.secondTimers
-          .map((secondTimer) => {
-            return columnOrder.map((column) => secondTimer[column]).join(",");
+        this.newConverts
+          .map((newConvert) => {
+            return columnOrder.map((column) => newConvert[column]).join(",");
           })
           .join("\n");
 

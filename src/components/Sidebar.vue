@@ -44,11 +44,40 @@
           <span class="mx-4">Dashboard</span>
         </router-link>
 
+        <!-- Job Boards -->
+        <router-link
+          class="flex items-center px-6 py-2 mt-4 duration-200 border-l-4"
+          :class="[$route.name === 'JobBoard' ? activeClass : inactiveClass]"
+          to="/job-board"
+          @click="handleNavLinkClick"
+        >
+          <svg
+            class="w-5 h-5"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M7 3C6.44772 3 6 3.44772 6 4C6 4.55228 6.44772 5 7 5H13C13.5523 5 14 4.55228 14 4C14 3.44772 13.5523 3 13 3H7Z"
+              fill="currentColor"
+            />
+            <path
+              d="M4 7C4 6.44772 4.44772 6 5 6H15C15.5523 6 16 6.44772 16 7C16 7.55228 15.5523 8 15 8H5C4.44772 8 4 7.55228 4 7Z"
+              fill="currentColor"
+            />
+            <path
+              d="M2 11C2 9.89543 2.89543 9 4 9H16C17.1046 9 18 9.89543 18 11V15C18 16.1046 17.1046 17 16 17H4C2.89543 17 2 16.1046 2 15V11Z"
+              fill="currentColor"
+            />
+          </svg>
+          <span class="mx-4">Job board</span>
+        </router-link>
+
         <!-- First Timer -->
         <router-link
           class="flex items-center px-6 py-2 mt-4 duration-200 border-l-4"
-          :class="[$route.name === 'FirstTimer' ? activeClass : inactiveClass]"
-          to="/first-timer"
+          :class="[$route.name === 'Profile' ? activeClass : inactiveClass]"
+          to="/profile"
           @click="handleNavLinkClick"
         >
           <svg
@@ -74,36 +103,7 @@
               fill="currentColor"
             />
           </svg>
-          <span class="mx-4">First Timer</span>
-        </router-link>
-
-        <!-- Second Timer -->
-        <router-link
-          class="flex items-center px-6 py-2 mt-4 duration-200 border-l-4"
-          :class="[$route.name === 'SecondTimer' ? activeClass : inactiveClass]"
-          to="/second-timer"
-          @click="handleNavLinkClick"
-        >
-          <svg
-            class="w-5 h-5"
-            viewBox="0 0 20 20"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M7 3C6.44772 3 6 3.44772 6 4C6 4.55228 6.44772 5 7 5H13C13.5523 5 14 4.55228 14 4C14 3.44772 13.5523 3 13 3H7Z"
-              fill="currentColor"
-            />
-            <path
-              d="M4 7C4 6.44772 4.44772 6 5 6H15C15.5523 6 16 6.44772 16 7C16 7.55228 15.5523 8 15 8H5C4.44772 8 4 7.55228 4 7Z"
-              fill="currentColor"
-            />
-            <path
-              d="M2 11C2 9.89543 2.89543 9 4 9H16C17.1046 9 18 9.89543 18 11V15C18 16.1046 17.1046 17 16 17H4C2.89543 17 2 16.1046 2 15V11Z"
-              fill="currentColor"
-            />
-          </svg>
-          <span class="mx-4">Second Timer</span>
+          <span class="mx-4">Profile</span>
         </router-link>
 
         <!-- New Convert -->
@@ -131,20 +131,22 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import { useSidebar } from '../composables/useSidebar'
-import { useRoute } from 'vue-router'
+import { ref } from "vue";
+import { useSidebar } from "../composables/useSidebar";
+import { useRoute } from "vue-router";
 
-const { isOpen, closeSidebar } = useSidebar()
-const activeClass = ref('bg-gray-600 bg-opacity-25 text-gray-100 border-gray-100')
-const inactiveClass = ref('border-gray-900 text-gray-500 hover:bg-gray-600 hover:bg-opacity-25 hover:text-gray-100')
+const { isOpen, closeSidebar } = useSidebar();
+const activeClass = ref("bg-gray-600 bg-opacity-25 text-gray-100 border-gray-100");
+const inactiveClass = ref(
+  "border-gray-900 text-gray-500 hover:bg-gray-600 hover:bg-opacity-25 hover:text-gray-100"
+);
 
-const route = useRoute()
+const route = useRoute();
 
 const handleNavLinkClick = () => {
   // Close the sidebar when a navigation link is clicked
-  closeSidebar()
-}
+  closeSidebar();
+};
 </script>
 
 <style scoped>
