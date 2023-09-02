@@ -10,6 +10,9 @@ module.exports = {
         sec: "#FFA500",     
         text: "#333333",       
       },
+      sizes: {
+        '4': ""
+      }
     },
   },
   plugins: [

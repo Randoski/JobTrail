@@ -1,49 +1,41 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref } from "vue";
 
 interface User {
-  username: string
-  email: string
-  password: string
-  confirm: string
+  username: string;
+  email: string;
+  password: string;
+  confirm: string;
 }
 
 const user = ref<User>({
-  username: '',
-  email: '',
-  password: '',
-  confirm: '',
-})
+  username: "",
+  email: "",
+  password: "",
+  confirm: "",
+});
 
 function register() {
-  const data = JSON.parse(JSON.stringify(user.value))
+  const data = JSON.parse(JSON.stringify(user.value));
   // eslint-disable-next-line no-console
-  console.log('Registered: ', data)
+  console.log("Registered: ", data);
 }
 </script>
 
 <template>
   <div>
-    <h3 class="text-3xl font-semibold text-gray-700">
-      Forms
-    </h3>
+    <h3 class="text-3xl font-semibold text-gray-700">Forms</h3>
 
     <div class="mt-4">
-      <h4 class="text-gray-600">
-        Model Form
-      </h4>
+      <h4 class="text-gray-600">Model Form</h4>
 
       <div class="mt-4">
-        <div
-          class="w-full max-w-sm overflow-hidden bg-white border rounded-md shadow-md"
-        >
+        <div class="w-full max-w-sm overflow-hidden bg-white border rounded-md shadow-md">
           <form>
             <div
               class="flex items-center justify-between px-5 py-3 text-gray-700 border-b"
             >
-              <h3 class="text-sm">
-                Add Category
-              </h3>
+              <h3 class="text-sm">Add Category</h3>
               <button>
                 <svg
                   class="w-4 h-4"
@@ -86,7 +78,7 @@ function register() {
                 <input
                   type="text"
                   class="w-full px-12 py-2 border-transparent rounded-md appearance-none focus:border-indigo-600 focus:ring focus:ring-opacity-40 focus:ring-indigo-500"
-                >
+                />
               </div>
             </div>
 
@@ -108,15 +100,11 @@ function register() {
     </div>
 
     <div class="mt-8">
-      <h4 class="text-gray-600">
-        Forms
-      </h4>
+      <h4 class="text-gray-600">Forms</h4>
 
       <div class="mt-4">
         <div class="p-6 bg-white rounded-md shadow-md">
-          <h2 class="text-lg font-semibold text-gray-700 capitalize">
-            Account settings
-          </h2>
+          <h2 class="text-lg font-semibold text-gray-700 capitalize">Account settings</h2>
 
           <form @submit.prevent="register">
             <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
@@ -126,7 +114,7 @@ function register() {
                   v-model="user.username"
                   class="w-full mt-2 border-gray-200 rounded-md focus:border-indigo-600 focus:ring focus:ring-opacity-40 focus:ring-indigo-500"
                   type="text"
-                >
+                />
               </div>
 
               <div>
@@ -135,7 +123,7 @@ function register() {
                   v-model="user.email"
                   class="w-full mt-2 border-gray-200 rounded-md focus:border-indigo-600 focus:ring focus:ring-opacity-40 focus:ring-indigo-500"
                   type="email"
-                >
+                />
               </div>
 
               <div>
@@ -144,16 +132,18 @@ function register() {
                   v-model="user.password"
                   class="w-full mt-2 border-gray-200 rounded-md focus:border-indigo-600 focus:ring focus:ring-opacity-40 focus:ring-indigo-500"
                   type="password"
-                >
+                />
               </div>
 
               <div>
-                <label class="text-gray-700" for="passwordConfirmation">Password Confirmation</label>
+                <label class="text-gray-700" for="passwordConfirmation"
+                  >Password Confirmation</label
+                >
                 <input
                   v-model="user.confirm"
                   class="w-full mt-2 border-gray-200 rounded-md focus:border-indigo-600 focus:ring focus:ring-opacity-40 focus:ring-indigo-500"
                   type="password"
-                >
+                />
               </div>
             </div>
 
