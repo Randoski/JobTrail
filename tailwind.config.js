@@ -5,8 +5,10 @@ module.exports = {
   content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   theme: {
     extend: {
-      fontFamily: {
-        sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+      colors: {
+        pry: "#007ACC",    
+        sec: "#FFA500",     
+        text: "#333333",       
       },
     },
   },

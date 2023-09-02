@@ -6,6 +6,8 @@ import FirstTimer from './views/FirstTimer.vue'
 import SecondTimer from './views/SecondTimer.vue'
 import NewConvert from './views/NewConvert.vue'
 import Login from './views/Login.vue'
+import SignUp from './views/SignUp.vue'
+import ForgotPassword from './views/ForgotPassword.vue'
 import AddFirstTimer from './views/AddFirstTimer.vue'
 import AddSecondTimer from './views/AddSecondTimer.vue'
 import AddNewConvert from './views/AddNewConvert.vue'
@@ -16,9 +18,21 @@ import EditFirstTimer from './views/EditFirstTimer.vue'
 
 const routes: RouteRecordRaw[] = [
   {
-    path: '/',
+    path: '/login',
     name: 'Login',
     component: Login,
+    meta: { layout: 'empty' },
+  },
+  {
+    path: '/sign-up',
+    name: 'SignUp',
+    component: SignUp,
+    meta: { layout: 'empty' },
+  },
+  {
+    path: '/forgot-password',
+    name: 'ForgotPassword',
+    component: ForgotPassword,
     meta: { layout: 'empty' },
   },
   {
