@@ -1,20 +1,17 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { useSidebar } from '../composables/useSidebar'
+import { ref } from "vue";
+import { useSidebar } from "../composables/useSidebar";
 
-const dropdownOpen = ref(false)
-const { isOpen } = useSidebar()
+const dropdownOpen = ref(false);
+const { isOpen } = useSidebar();
 </script>
 
 <template>
   <header
-    class="flex items-center justify-between px-6 py-4 bg-white border-b-4 border-indigo-600"
+    class="flex items-center justify-between px-6 py-4 bg-white border-b-4 border-pry"
   >
     <div class="flex items-center">
-      <button
-        class="text-gray-500 focus:outline-none lg:hidden"
-        @click="isOpen = true"
-      >
+      <button class="text-gray-500 focus:outline-none lg:hidden" @click="isOpen = true">
         <svg
           class="w-6 h-6"
           viewBox="0 0 24 24"
@@ -45,10 +42,10 @@ const { isOpen } = useSidebar()
         </span>
 
         <input
-          class="w-32 pl-10 pr-4 text-indigo-600 border-gray-200 rounded-md sm:w-64 focus:border-indigo-600 focus:ring focus:ring-opacity-40 focus:ring-indigo-500"
+          class="w-32 pl-10 pr-4 text-pry border-gray-200 rounded-md sm:w-64 focus:border-pry focus:ring focus:ring-opacity-40 focus:ring-pry"
           type="text"
           placeholder="Search"
-        >
+        />
       </div>
     </div>
 
@@ -79,7 +76,7 @@ const { isOpen } = useSidebar()
             class="object-cover w-full h-full"
             src="https://images.unsplash.com/photo-1528892952291-009c663ce843?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=296&q=80"
             alt="Your avatar"
-          >
+          />
         </button>
 
         <div
@@ -102,15 +99,17 @@ const { isOpen } = useSidebar()
           >
             <a
               href="#"
-              class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white"
-            >Profile</a>
+              class="block px-4 py-2 text-sm text-gray-700 hover:bg-pry hover:text-white"
+              >Profile</a
+            >
             <a
               href="#"
-              class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white"
-            >Products</a>
+              class="block px-4 py-2 text-sm text-gray-700 hover:bg-pry hover:text-white"
+              >Products</a
+            >
             <router-link
               to="/"
-              class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white"
+              class="block px-4 py-2 text-sm text-gray-700 hover:bg-pry hover:text-white"
             >
               Log out
             </router-link>

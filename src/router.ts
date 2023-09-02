@@ -2,19 +2,16 @@ import type { RouteRecordRaw } from 'vue-router'
 import { createRouter, createWebHistory } from 'vue-router'
 
 import Dashboard from './views/Dashboard.vue'
-import FirstTimer from './views/FirstTimer.vue'
-import SecondTimer from './views/SecondTimer.vue'
+import JobBoard from './views/JobBoard.vue'
+import AddJob from './views/AddJob.vue'
 import NewConvert from './views/NewConvert.vue'
 import Login from './views/Login.vue'
 import SignUp from './views/SignUp.vue'
 import ForgotPassword from './views/ForgotPassword.vue'
-import AddFirstTimer from './views/AddFirstTimer.vue'
-import AddSecondTimer from './views/AddSecondTimer.vue'
 import AddNewConvert from './views/AddNewConvert.vue'
-import NewConvertDetails from './views/NewConvertDetails.vue'
-import FirstTimerDetails from './views/FirstTimerDetails.vue'
-import SecondTimerDetails from './views/SecondTimerDetails.vue'
-import EditFirstTimer from './views/EditFirstTimer.vue'
+import Profile from './views/Profile.vue'
+import Forms  from './views/Forms.vue'
+
 
 const routes: RouteRecordRaw[] = [
   {
@@ -40,60 +37,48 @@ const routes: RouteRecordRaw[] = [
     name: 'Dashboard',
     component: Dashboard,
   },
+
   {
-    path: '/first-timer',
-    name: 'FirstTimer',
-    component: FirstTimer,
+    path: '/job-board',
+    name: 'JobBoard',
+    component: JobBoard,
   },
+
   {
-    path: '/second-timer',
-    name: 'SecondTimer',
-    component: SecondTimer,
+    path: '/add-job',
+    name: 'AddJob',
+    component: AddJob,
   },
+
+
+
+  {
+    path: '/profile',
+    name: 'Profile',
+    component: Profile,
+  },
+ 
+  
   {
     path: '/new-convert',
     name: 'NewConvert',
     component: NewConvert,
   },
-  {
-    path: '/add-first-timer',
-    name: 'AddFirstTimer',
-    component: AddFirstTimer,
-  },
-  {
-    path: '/add-second-timer',
-    name: 'AddSecondTimer',
-    component: AddSecondTimer,
-  },
+  
+  
   {
     path: '/add-new-convert',
     name: 'AddNewConvert',
     component: AddNewConvert,
   },
+
   {
-    path: "/new-convert-details/:id",
-    name: "NewConvertDetails",
-    component: NewConvertDetails,
-    props: true,
+    path: "/forms",
+    name: "Forms",
+    component: Forms,
   }, 
-  {
-    path: "/first-timer-details/:id",
-    name: "FirstTimerDetails",
-    component: FirstTimerDetails,
-    props: true,
-  }, 
-  {
-    path: "/second-timer-details/:id",
-    name: "SecondTimerDetails",
-    component: SecondTimerDetails,
-    props: true,
-  }, 
-  {
-    path: '/edit-first-timer/:id',
-    name: 'EditFirstTimer',
-    component: EditFirstTimer,
-    props: true
-  },
+  
+ 
    
 ]
 
