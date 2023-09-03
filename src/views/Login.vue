@@ -56,12 +56,29 @@
 </template>
 
 <script>
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+
 export default {
   data() {
     return {
-      email: "test",
-      password: "test",
+      email: "",
+      password: "",
     };
+  },
+  methods: {
+    login() {
+      const auth = getAuth();
+      signInWithEmailAndPassword(auth, this.email, this.password)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          alert("Logged in");
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          alert(errorCode, errorMessage);
+        });
+    },
   },
 };
 </script>

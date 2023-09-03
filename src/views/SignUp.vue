@@ -9,7 +9,7 @@
         />
       </div>
 
-      <form class="mt-4" @submit.prevent="login">
+      <form class="mt-4" @submit.prevent="signUp">
         <label class="block">
           <span class="text-sm text-gray-700">Email</span>
           <input
@@ -50,12 +50,30 @@
 </template>
 
 <script>
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { useRouter } from "vue-router";
 export default {
   data() {
     return {
-      email: "test",
-      password: "test",
+      email: "",
+      password: "",
     };
+  },
+  methods: {
+    signUp() {
+      const auth = getAuth();
+      createUserWithEmailAndPassword(auth, this.email, this.password)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          alert("Signed up");
+          router.push("/dashboard");
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          alert(errorCode, errorMessage);
+        });
+    },
   },
 };
 </script>

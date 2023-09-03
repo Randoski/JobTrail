@@ -2,7 +2,7 @@
   <div>
     <!-- Heading and Add button -->
     <div class="flex flex-col md:flex-row md:justify-between">
-      <h3 class="text-3xl font-medium text-gray-700 mb-4 md:mb-0 md:mr-4">New Convert</h3>
+      <h3 class="text-3xl font-medium text-gray-700 mb-4 md:mb-0 md:mr-4">Job Board</h3>
 
       <router-link
         to="/add-job"
@@ -11,11 +11,10 @@
         Add Job
       </router-link>
     </div>
-
     <!-- Filter Section-->
     <div class="mt-8">
       <div class="mt-6">
-        <h2 class="text-xl font-semibold leading-tight text-gray-700">All Categories</h2>
+        <h2 class="text-xl font-semibold leading-tight text-gray-700">All Stages</h2>
 
         <!-- Top Buttons -->
         <div class="flex flex-col mt-3 sm:flex-row">
@@ -26,7 +25,7 @@
                 v-model="selectedZone"
                 class="cursor-pointer block w-full h-full px-4 py-2 pr-8 leading-tight text-gray-700 bg-white border border-gray-400 rounded-2 appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
               >
-                <option value="All">All Jobs</option>
+                <option value="All">All Stages</option>
                 <option v-for="category in categories" :key="category" :value="category">
                   {{ category }}
                 </option>
@@ -86,7 +85,7 @@
                     <th
                       class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50"
                     >
-                      Category
+                      Stage
                     </th>
                     <th
                       class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50"
@@ -135,15 +134,7 @@
                       <td
                         class="px-6 py-4 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap"
                       >
-                        <router-link
-                          :to="{
-                            name: 'NewConvertDetails',
-                            params: { id: newConvert.id },
-                          }"
-                          class="cursor-pointer text-pry hover:text-pry"
-                        >
-                          View
-                        </router-link>
+                        <router-link> View </router-link>
                       </td>
                     </tr>
                   </template>

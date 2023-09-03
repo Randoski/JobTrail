@@ -9,7 +9,7 @@
         />
       </div>
 
-      <form class="mt-4" @submit.prevent="login">
+      <form class="mt-4" @submit.prevent="forgotPassword">
         <label class="block">
           <span class="text-sm text-gray-700">Email</span>
           <input
@@ -33,11 +33,24 @@
 </template>
 
 <script>
+import { getAuth, sendPasswordResetEmail } from "firebase/auth";
+
 export default {
   data() {
     return {
-      email: "test",
+      email: "",
     };
+  },
+  methods: {
+    forgotPassword() {
+      const auth = getAuth();
+      sendPasswordResetEmail(auth, this.email).then(() => {});
+      alert("An password reset link has been sent to your email").catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        alert(errorCode, errorMessage);
+      });
+    },
   },
 };
 </script>

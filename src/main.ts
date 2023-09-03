@@ -6,18 +6,23 @@ import DashboardLayout from './components/DashboardLayout.vue';
 import EmptyLayout from './components/EmptyLayout.vue';
 import { initializeApp } from 'firebase/app';
 import { getFirestore } from "firebase/firestore";
+import { getAuth } from "firebase/auth";
+
 
 const app = createApp(App);
 
 // Firebase configuration
 const firebaseConfig = {
-    apiKey: 'AIzaSyACd-Z6wGB7Z5qth0wd80FyMKMpwNvN5gQ',
-    authDomain: 'dominioncity-mvp.firebaseapp.com',
-    projectId: 'dominioncity-mvp',
-    storageBucket: 'dominioncity-mvp.appspot.com',
-    messagingSenderId: '294584207986',
-    appId: '1:294584207986:web:b921f066c86ab8cd8590eb',
-  };
+  apiKey: "AIzaSyC8oY1pp_IGI9WBlTjGh0QDu9FMFTxSVNg",
+  authDomain: "job-application-manager-79c2d.firebaseapp.com",
+  databaseURL: "https://job-application-manager-79c2d-default-rtdb.firebaseio.com",
+  projectId: "job-application-manager-79c2d",
+  storageBucket: "job-application-manager-79c2d.appspot.com",
+  messagingSenderId: "852335180708",
+  appId: "1:852335180708:web:26f2e8eed74050aca51f31"
+
+};
+
 
 // Initialize Firebase
 const firebaseApp = initializeApp(firebaseConfig);
