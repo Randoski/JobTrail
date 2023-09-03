@@ -45,6 +45,7 @@ export default {
     forgotPassword() {
       const auth = getAuth();
       sendPasswordResetEmail(auth, this.email).then(() => {});
+      this.$router.push("/login");
       alert("An password reset link has been sent to your email").catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
