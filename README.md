@@ -1,10 +1,10 @@
-# Dominion City Surulere - MVP
+# Job Application Manager
 
-This ERP system is designed to effectively manage and maintain records of the members within Dominion City Surulere, offering efficient tools for membership administration. 
+A project to manage Job application process for job Applicants. 
 
 ## Live Web
 
-https://dominioncity-mvp.netlify.app
+https://job-applicartion-manager.vercel.app
 
 
 ## Project setup
