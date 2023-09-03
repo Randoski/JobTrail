@@ -1,6 +1,7 @@
 import type { RouteRecordRaw } from 'vue-router'
 import { createRouter, createWebHistory } from 'vue-router'
 
+import LandingPage from './views/LandingPage.vue'
 import Dashboard from './views/Dashboard.vue'
 import JobBoard from './views/JobBoard.vue'
 import AddJob from './views/AddJob.vue'
@@ -14,6 +15,12 @@ import Forms  from './views/Forms.vue'
 
 
 const routes: RouteRecordRaw[] = [
+  {
+    path: '/',
+    name: 'LandingPage',
+    component: LandingPage,
+    meta: { layout: 'empty' },
+  },
   {
     path: '/login',
     name: 'Login',

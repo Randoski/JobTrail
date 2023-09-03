@@ -68,10 +68,12 @@ export default {
   methods: {
     login() {
       const auth = getAuth();
+
       signInWithEmailAndPassword(auth, this.email, this.password)
         .then((userCredential) => {
           const user = userCredential.user;
           alert("Logged in");
+          this.$router.push("/dashboard");
         })
         .catch((error) => {
           const errorCode = error.code;

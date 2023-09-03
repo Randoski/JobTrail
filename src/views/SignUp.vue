@@ -51,7 +51,7 @@
 
 <script>
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { useRouter } from "vue-router";
+
 export default {
   data() {
     return {
@@ -64,14 +64,15 @@ export default {
       const auth = getAuth();
       createUserWithEmailAndPassword(auth, this.email, this.password)
         .then((userCredential) => {
+          // Signed in
           const user = userCredential.user;
           alert("Signed up");
-          router.push("/dashboard");
+          this.$router.push("/dashboard");
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          alert(errorCode, errorMessage);
+          console.error(errorCode, errorMessage);
         });
     },
   },
