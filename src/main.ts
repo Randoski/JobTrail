@@ -6,8 +6,6 @@ import DashboardLayout from './components/DashboardLayout.vue';
 import EmptyLayout from './components/EmptyLayout.vue';
 import { initializeApp } from 'firebase/app';
 import { getFirestore } from "firebase/firestore";
-import { getAuth } from "firebase/auth";
-
 
 const app = createApp(App);
 
@@ -22,7 +20,6 @@ const firebaseConfig = {
   appId: "1:852335180708:web:26f2e8eed74050aca51f31"
 
 };
-
 
 // Initialize Firebase
 const firebaseApp = initializeApp(firebaseConfig);
@@ -41,6 +38,3 @@ app.use(router);
 app.mount('#app');
 
 export { db };
-
-
-

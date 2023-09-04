@@ -72,7 +72,8 @@ export default {
       signInWithEmailAndPassword(auth, this.email, this.password)
         .then((userCredential) => {
           const user = userCredential.user;
-          alert("Logged in");
+
+          // alert("Logged in");
           this.$router.push("/dashboard");
         })
         .catch((error) => {

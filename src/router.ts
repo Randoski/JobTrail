@@ -1,6 +1,6 @@
 import type { RouteRecordRaw } from 'vue-router'
 import { createRouter, createWebHistory } from 'vue-router'
-
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 import LandingPage from './views/LandingPage.vue'
 import Dashboard from './views/Dashboard.vue'
 import JobBoard from './views/JobBoard.vue'
@@ -43,6 +43,7 @@ const routes: RouteRecordRaw[] = [
     path: '/dashboard',
     name: 'Dashboard',
     component: Dashboard,
+    meta: { requiresAuth: true },
   },
 
   {
@@ -94,4 +95,28 @@ const router = createRouter({
   routes,
 })
 
+router.beforeEach(async (to, _from, next) => {
+  const requiresAuth = to.matched.some((record) => record.meta.requiresAuth);
+  const auth = getAuth();
+
+  // Await the onAuthStateChanged promise to ensure the user state is correctly resolved
+  await new Promise<void>((resolve) => {
+    onAuthStateChanged(auth, (user) => {
+      if (requiresAuth && !user) {
+        alert("You need to login to access this page.");
+        next({
+          path: "/login",
+          query: { redirect: to.fullPath }, // Store the intended destination
+        });
+      } else if (requiresAuth && user) {
+        next();
+      } else {
+        next();
+      }
+
+      // Resolve the promise once the onAuthStateChanged callback is executed
+      resolve(); 
+    });
+  });
+});
 export default router
