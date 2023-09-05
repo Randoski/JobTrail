@@ -50,12 +50,16 @@ const routes: RouteRecordRaw[] = [
     path: '/job-board',
     name: 'JobBoard',
     component: JobBoard,
+    meta: { requiresAuth: true },
+
   },
 
   {
     path: '/add-job',
     name: 'AddJob',
     component: AddJob,
+    meta: { requiresAuth: true },
+
   },
 
 
@@ -64,6 +68,8 @@ const routes: RouteRecordRaw[] = [
     path: '/profile',
     name: 'Profile',
     component: Profile,
+    meta: { requiresAuth: true },
+
   },
  
   
