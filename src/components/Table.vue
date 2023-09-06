@@ -50,7 +50,7 @@
             class="inline-block min-w-full overflow-hidden align-middle border-b border-gray-200 shadow sm:rounded-lg"
           >
             <div v-if="loading">Loading...</div>
-            <table v-else class="min - w - full">
+            <table v-else class="min-w-full">
               <thead>
                 <tr>
                   <th
@@ -78,7 +78,7 @@
               </thead>
 
               <tbody class="bg-white">
-                <tr v-for="job in jobs" :key="job.id">
+                <tr v-for="job in sortedJobs" :key="job.id">
                   <td class="py-4 border-b border-gray-200 whitespace-nowrap">
                     <!-- Company Name -->
                     <div class="ml-4">
@@ -143,6 +143,7 @@ export default {
   },
 
   methods: {
+    // Display Jobs in table
     displayJobs() {
       const jobCollection = collection(db, "jobs");
 
@@ -159,6 +160,7 @@ export default {
       });
     },
 
+    // Bg color and text color for stages
     getStage(stage) {
       let bgColorClass = "";
       let textColorClass = "";
@@ -185,8 +187,8 @@ export default {
           textColorClass = "text-red-800";
           break;
         default:
-          bgColorClass = ""; // Handle the default case if needed
-          textColorClass = ""; // Handle the default case if needed
+          bgColorClass = "";
+          textColorClass = "";
           break;
       }
 
@@ -194,6 +196,22 @@ export default {
         bgColor: bgColorClass,
         textColor: textColorClass,
       };
+    },
+  },
+  computed: {
+    sortedJobs() {
+      return this.jobs.slice().sort((a, b) => {
+        const companyA = a.companyName.toLowerCase();
+        const companyB = b.companyName.toLowerCase();
+
+        if (companyA < companyB) {
+          return -1;
+        }
+        if (companyA > companyB) {
+          return 1;
+        }
+        return 0;
+      });
     },
   },
   created() {
