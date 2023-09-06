@@ -66,12 +66,12 @@
                   <th
                     class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase bg-gray-100 border-b border-gray-200"
                   >
-                    Status
+                    Stage
                   </th>
                   <th
                     class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase bg-gray-100 border-b border-gray-200"
                   >
-                    Salary
+                    Level
                   </th>
                   <th class="px-6 py-3 bg-gray-100 border-b border-gray-200" />
                 </tr>
@@ -98,7 +98,11 @@
                   <!-- Stage -->
                   <td class="px-6 py-4 border-b border-gray-200 whitespace-nowrap">
                     <span
-                      class="inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full"
+                      class="inline-flex px-2 text-xs font-semibold leading-5 rounded-full"
+                      :class="[
+                        getStage(job.stage).textColor,
+                        getStage(job.stage).bgColor,
+                      ]"
                     >
                       {{ job.stage }}
                     </span>
@@ -154,10 +158,46 @@ export default {
         this.loading = false;
       });
     },
-  },
 
+    getStage(stage) {
+      let bgColorClass = "";
+      let textColorClass = "";
+
+      switch (stage) {
+        case "Wishlist":
+          bgColorClass = "bg-blue-100";
+          textColorClass = "text-blue-800";
+          break;
+        case "Applied":
+          bgColorClass = "bg-yellow-200";
+          textColorClass = "text-yellow-800";
+          break;
+        case "Interview":
+          bgColorClass = "bg-orange-200";
+          textColorClass = "text-orange-800";
+          break;
+        case "Offer":
+          bgColorClass = "bg-green-100";
+          textColorClass = "text-green-800";
+          break;
+        case "Rejected":
+          bgColorClass = "bg-red-100";
+          textColorClass = "text-red-800";
+          break;
+        default:
+          bgColorClass = ""; // Handle the default case if needed
+          textColorClass = ""; // Handle the default case if needed
+          break;
+      }
+
+      return {
+        bgColor: bgColorClass,
+        textColor: textColorClass,
+      };
+    },
+  },
   created() {
-    this.displayJobs(); // Call the method to load jobs when the component is created
+    this.displayJobs();
   },
 };
 </script>
