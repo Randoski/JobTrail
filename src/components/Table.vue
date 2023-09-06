@@ -49,7 +49,8 @@
           <div
             class="inline-block min-w-full overflow-hidden align-middle border-b border-gray-200 shadow sm:rounded-lg"
           >
-            <table class="min-w-full">
+            <div v-if="loading">Loading...</div>
+            <table v-else class="min - w - full">
               <thead>
                 <tr>
                   <th
@@ -77,35 +78,37 @@
               </thead>
 
               <tbody class="bg-white">
-                <tr>
+                <tr v-for="job in jobs" :key="job.id">
                   <td class="py-4 border-b border-gray-200 whitespace-nowrap">
                     <!-- Company Name -->
                     <div class="ml-4">
                       <div class="ml-2 text-sm font-medium leading-5 text-gray-900">
-                        Company
+                        {{ job.companyName }}
                       </div>
                     </div>
                   </td>
 
                   <!-- Role  -->
                   <td class="px-6 py-4 border-b border-gray-200 whitespace-nowrap">
-                    <div class="text-sm leading-5 text-gray-900">Frontend Dev</div>
+                    <div class="text-sm leading-5 text-gray-900">
+                      {{ job.role }}
+                    </div>
                   </td>
 
-                  <!-- Status -->
+                  <!-- Stage -->
                   <td class="px-6 py-4 border-b border-gray-200 whitespace-nowrap">
                     <span
                       class="inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full"
                     >
-                      Status</span
-                    >
+                      {{ job.stage }}
+                    </span>
                   </td>
 
                   <!-- Salary -->
                   <td
                     class="px-6 py-4 text-sm leading-5 text-gray-500 border-b border-gray-200 whitespace-nowrap"
                   >
-                    N150,000
+                    {{ job.level }}
                   </td>
 
                   <td
@@ -122,3 +125,39 @@
     </div>
   </div>
 </template>
+
+<script>
+import { collection, onSnapshot } from "firebase/firestore";
+import { db } from "../main";
+
+export default {
+  data() {
+    return {
+      loading: true,
+      jobs: [],
+    };
+  },
+
+  methods: {
+    displayJobs() {
+      const jobCollection = collection(db, "jobs");
+
+      onSnapshot(jobCollection, (querySnapshot) => {
+        const jobData = [];
+        querySnapshot.forEach((doc) => {
+          jobData.push({
+            id: doc.id,
+            ...doc.data(),
+          });
+        });
+        this.jobs = jobData;
+        this.loading = false;
+      });
+    },
+  },
+
+  created() {
+    this.displayJobs(); // Call the method to load jobs when the component is created
+  },
+};
+</script>

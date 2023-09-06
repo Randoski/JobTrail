@@ -2,7 +2,7 @@
   <div>
     <!-- Heading and Add button -->
     <div class="flex flex-col md:flex-row md:justify-between">
-      <h3 class="text-3xl font-medium text-gray-700 mb-4 md:mb-0 md:mr-4">New Convert</h3>
+      <p class="text-3xl font-2 text-gray-700 mb-4 md:mb-0 md:mr-4">Job Board</p>
 
       <button
         @click="open = true"
@@ -50,12 +50,13 @@
           <div>
             <div class="w-full max-w-sm overflow-hidden">
               <!-- Form -->
-              <form>
+              <form @submit.prevent="submitData">
                 <div class="py-4 text-gray-700">
                   <!-- Company Name -->
 
-                  <label class="text-xs">Name</label>
+                  <label class="text-xs">Company Name</label>
                   <input
+                    v-model="companyName"
                     type="text"
                     class="text-sm w-full px-3 py-2 mt-2 mb-4 border-gray-400 rounded-md appearance-none focus:border-pry focus:ring focus:ring-opacity-40 focus:ring-pry"
                   />
@@ -63,50 +64,48 @@
                   <!-- Role -->
                   <label class="text-xs">Role</label>
                   <input
+                    v-model="role"
                     type="text"
                     class="text-sm w-full px-3 py-2 mt-2 mb-4 border-gray-400 rounded-md appearance-none focus:border-pry focus:ring focus:ring-opacity-40 focus:ring-pry"
                   />
 
-                  <!-- Role -->
+                  <!-- Level-->
                   <label class="text-xs">Level</label>
                   <select
-                    name="org-level"
+                    v-model="level"
                     class="text-sm w-full px-3 py-2 mt-2 mb-4 border-gray-400 rounded-md appearance-none focus:border-pry focus:ring focus:ring-opacity-40 focus:ring-pry"
                   >
-                    <option v-for="level in levels" :key="level.name" :value="level.name">
+                    <option value="" disabled>Select a level</option>
+                    <option v-for="level in levels" :key="level" :value="level">
                       {{ level }}
                     </option>
                   </select>
 
                   <!-- Stage -->
+
                   <label class="text-xs">Stage</label>
                   <select
-                    name="org-level"
+                    v-model="stage"
                     class="text-sm w-full px-3 py-2 mt-2 mb-4 border-gray-400 rounded-md appearance-none focus:border-pry focus:ring focus:ring-opacity-40 focus:ring-pry"
                   >
-                    <option v-for="stage in stages" :key="stage.name" :value="stage.name">
+                    <option value="" disabled>Select a stage</option>
+                    <option v-for="stage in stages" :key="stage" :value="stage">
                       {{ stage }}
                     </option>
                   </select>
                 </div>
+
+                <!-- Footer -->
+                <div class="flex justify-end">
+                  <button
+                    type="submit"
+                    class="p-3 px-6 py-3 text-white bg-pry rounded focus:outline-none"
+                  >
+                    Save
+                  </button>
+                </div>
               </form>
             </div>
-          </div>
-
-          <!-- Footer -->
-          <div class="flex justify-end">
-            <!-- <button
-              class="px-6 py-3 mr-2 text-pry bg-transparent rounded-lg hover:bg-gray-100 hover:text-pry focus:outline-none"
-              @click="open = false"
-            >
-              Continue
-            </button> -->
-            <button
-              class="p-3 px-6 py-3 text-white bg-pry rounded focus:outline-none"
-              @click="open = false"
-            >
-              Save
-            </button>
           </div>
         </div>
       </div>
@@ -119,14 +118,18 @@
 <script>
 import { ref } from "vue";
 import Table from "../components/Table.vue";
+import { collection, addDoc, onSnapshot } from "firebase/firestore";
+import { db } from "../main";
 
 export default {
   components: {
     Table,
   },
+  // Data
   data() {
     return {
       open: ref(false),
+      stages: ["Wishlist", "Applied", "Interview", "Offer", "Rejected"],
       levels: [
         "Intern",
         "Junior / Entry Level",
@@ -138,8 +141,35 @@ export default {
         "C-Suite",
         "Board of Directors",
       ],
-      stages: ["Wishlist", "Applied", "Interview", "Offer", "Rejected"],
+      companyName: "",
+      role: "",
+      level: "",
+      stage: "",
     };
+  },
+
+  // Methods
+  methods: {
+    async submitData() {
+      if (this.companyName && this.role && this.level && this.stage) {
+        try {
+          const formData = {
+            companyName: this.companyName,
+            role: this.role,
+            level: this.level,
+            stage: this.stage,
+          };
+          const docRef = await addDoc(collection(db, "jobs"), formData);
+          alert(
+            this.role + " at " + this.companyName + " has been added to your Job board"
+          );
+        } catch (error) {
+          console.error("Error adding document: ", error);
+        }
+      } else {
+        alert("Please fill in all fields before submitting.");
+      }
+    },
   },
 };
 </script>

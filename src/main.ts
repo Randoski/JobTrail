@@ -6,6 +6,7 @@ import DashboardLayout from './components/DashboardLayout.vue';
 import EmptyLayout from './components/EmptyLayout.vue';
 import { initializeApp } from 'firebase/app';
 import { getFirestore } from "firebase/firestore";
+// import store from "./store";
 
 const app = createApp(App);
 
@@ -35,6 +36,7 @@ app.component('DefaultLayout', DashboardLayout);
 app.component('EmptyLayout', EmptyLayout);
 
 app.use(router);
+// app.use(store);
 app.mount('#app');
 
 export { db };
