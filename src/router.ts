@@ -5,12 +5,15 @@ import LandingPage from './views/LandingPage.vue'
 import Dashboard from './views/Dashboard.vue'
 import JobBoard from './views/JobBoard.vue'
 import AddJob from './views/AddJob.vue'
-import NewConvert from './views/NewConvert.vue'
+import Company from './views/Company.vue'
 import Login from './views/Login.vue'
 import SignUp from './views/SignUp.vue'
 import ForgotPassword from './views/ForgotPassword.vue'
+
+// Delete
 import AddNewConvert from './views/AddNewConvert.vue'
 import Profile from './views/Profile.vue'
+import NewConvert from './views/NewConvert.vue'
 import Forms  from './views/Forms.vue'
 
 
@@ -51,7 +54,6 @@ const routes: RouteRecordRaw[] = [
     name: 'JobBoard',
     component: JobBoard,
     meta: { requiresAuth: true },
-
   },
 
   {
@@ -59,11 +61,17 @@ const routes: RouteRecordRaw[] = [
     name: 'AddJob',
     component: AddJob,
     meta: { requiresAuth: true },
+  },
 
+  {
+    path: '/company',
+    name: 'Company',
+    component: Company,
+    meta: { requiresAuth: true },
   },
 
 
-
+  // Delete
   {
     path: '/profile',
     name: 'Profile',

@@ -1,27 +1,37 @@
 <template>
   <div>
-    <h2 class="text-xl leading-tight mt-8 text-gray-700">All Stages</h2>
+    <h2 class="text-xl leading-tight mt-8 text-gray-700">Jobs Saved</h2>
 
     <!-- Filter -->
     <div class="flex flex-col mt-3 sm:flex-row">
       <div class="flex">
+        <!-- Stages -->
         <div class="relative">
           <select
-            class="block w-full h-full px-4 py-2 pr-8 leading-tight text-gray-700 bg-white border border-gray-400 rounded-l appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
+            v-model="stage"
+            class="cursor-pointer block w-full h-full px-4 py-2 pr-8 leading-tight text-gray-700 bg-white border border-gray-400 rounded-l appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
           >
-            <option>5</option>
-            <option>10</option>
-            <option>20</option>
+            <option value="All">
+              All stages
+              <span>{{ stageLength }}</span>
+            </option>
+            <option v-for="stage in stages" :key="stage" :value="stage">
+              {{ stage }}
+              {{ stageLength }}
+            </option>
           </select>
         </div>
 
+        <!-- Level -->
         <div class="relative">
           <select
-            class="block w-full h-full px-4 py-2 pr-8 leading-tight text-gray-700 bg-white border-t border-b border-r border-gray-400 rounded-r appearance-none sm:rounded-r-none sm:border-r-0 focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500"
+            v-model="level"
+            class="cursor-pointer block w-full h-full px-4 py-2 pr-8 leading-tight text-gray-700 bg-white border border-gray-400 rounded-l appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
           >
-            <option>All</option>
-            <option>Active</option>
-            <option>Inactive</option>
+            <option value="All">All Levels</option>
+            <option v-for="level in levels" :key="level" :value="level">
+              {{ level }}
+            </option>
           </select>
         </div>
       </div>
@@ -133,12 +143,26 @@
 <script>
 import { collection, onSnapshot } from "firebase/firestore";
 import { db } from "../main";
-
 export default {
   data() {
     return {
       loading: true,
+      stage: "All",
+      level: "All",
+      stageLength: 0,
       jobs: [],
+      stages: ["Wishlist", "Applied", "Interview", "Offer", "Rejected"],
+      levels: [
+        "Intern",
+        "Junior / Entry Level",
+        "Mid-Level",
+        "Senior-level",
+        "Managerial / Supervisory",
+        "Director",
+        "Executive",
+        "C-Suite",
+        "Board of Directors",
+      ],
     };
   },
 
