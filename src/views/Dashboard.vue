@@ -1,40 +1,12 @@
-<script setup lang="ts">
-import { ref } from 'vue'
-
-interface User {
-  name: string
-  email: string
-  title: string
-  title2: string
-  status: string
-  role: string
-}
-
-const testUser: User = {
-  name: 'John Doe',
-  email: 'john@example.com',
-  title: 'Software Engineer',
-  title2: 'Web dev',
-  status: 'Active',
-  role: 'Owner',
-}
-
-const users = ref<User[]>([...Array(10).keys()].map(() => testUser))
-</script>
-
 <template>
   <div>
-    <h3 class="text-3xl font-medium text-gray-700">
-      Dashboard
-    </h3>
+    <h3 class="text-3xl font-medium text-gray-700">Dashboard</h3>
 
     <div class="mt-4">
       <div class="flex flex-wrap -mx-6">
         <div class="w-full px-6 sm:w-1/2 xl:w-1/3">
-          <div
-            class="flex items-center px-5 py-6 bg-white rounded-md shadow-sm"
-          >
-            <div class="p-3 bg-indigo-600 bg-opacity-75 rounded-full">
+          <div class="flex items-center px-5 py-6 bg-white rounded-md shadow-sm">
+            <div class="p-3 bg-pry bg-opacity-75 rounded-full">
               <svg
                 class="w-8 h-8 text-white"
                 viewBox="0 0 28 30"
@@ -69,20 +41,14 @@ const users = ref<User[]>([...Array(10).keys()].map(() => testUser))
             </div>
 
             <div class="mx-5">
-              <h4 class="text-2xl font-semibold text-gray-700">
-                8,282
-              </h4>
-              <div class="text-gray-500">
-                New Users
-              </div>
+              <h4 class="text-2xl font-semibold text-gray-700">{{ totalData }}</h4>
+              <div class="text-gray-500">Total Jobs</div>
             </div>
           </div>
         </div>
 
         <div class="w-full px-6 mt-6 sm:w-1/2 xl:w-1/3 sm:mt-0">
-          <div
-            class="flex items-center px-5 py-6 bg-white rounded-md shadow-sm"
-          >
+          <div class="flex items-center px-5 py-6 bg-white rounded-md shadow-sm">
             <div class="p-3 bg-blue-600 bg-opacity-75 rounded-full">
               <svg
                 class="w-8 h-8 text-white"
@@ -106,20 +72,14 @@ const users = ref<User[]>([...Array(10).keys()].map(() => testUser))
             </div>
 
             <div class="mx-5">
-              <h4 class="text-2xl font-semibold text-gray-700">
-                200,521
-              </h4>
-              <div class="text-gray-500">
-                Total Orders
-              </div>
+              <h4 class="text-2xl font-semibold text-gray-700">200,521</h4>
+              <div class="text-gray-500">Total Orders</div>
             </div>
           </div>
         </div>
 
         <div class="w-full px-6 mt-6 sm:w-1/2 xl:w-1/3 xl:mt-0">
-          <div
-            class="flex items-center px-5 py-6 bg-white rounded-md shadow-sm"
-          >
+          <div class="flex items-center px-5 py-6 bg-white rounded-md shadow-sm">
             <div class="p-3 bg-pink-600 bg-opacity-75 rounded-full">
               <svg
                 class="w-8 h-8 text-white"
@@ -143,18 +103,41 @@ const users = ref<User[]>([...Array(10).keys()].map(() => testUser))
             </div>
 
             <div class="mx-5">
-              <h4 class="text-2xl font-semibold text-gray-700">
-                215,542
-              </h4>
-              <div class="text-gray-500">
-                Available Products
-              </div>
+              <h4 class="text-2xl font-semibold text-gray-700">215,542</h4>
+              <div class="text-gray-500">Available Products</div>
             </div>
           </div>
         </div>
       </div>
     </div>
-
-    
   </div>
 </template>
+
+<script>
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../main";
+
+export default {
+  data() {
+    return {
+      totalData: 0,
+    };
+  },
+
+  methods: {
+    // Total User
+    async fetchTotalData() {
+      try {
+        const querySnapshot = await getDocs(collection(db, "jobs"));
+        this.totalData = querySnapshot.size;
+      } catch (error) {
+        console.error("Error fetching total data:", error);
+      }
+    },
+  },
+
+  created() {
+    this.fetchTotalData();
+  },
+};
+</script>
