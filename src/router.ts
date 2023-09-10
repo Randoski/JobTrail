@@ -112,15 +112,23 @@ const router = createRouter({
 
 router.beforeEach(async (to, _from, next) => {
   const requiresAuth = to.matched.some((record) => record.meta.requiresAuth);
+  const isPageWithEmptyLayout = to.meta.layout === 'empty';
+
+  // Skip authentication check for pages with empty layout
+  if (isPageWithEmptyLayout) {
+    next();
+    return;
+  }
+
   const auth = getAuth();
 
   // Await the onAuthStateChanged promise to ensure the user state is correctly resolved
   await new Promise<void>((resolve) => {
     onAuthStateChanged(auth, (user) => {
       if (requiresAuth && !user) {
-        alert("You need to login to access this page.");
+        alert('You need to log in to access this page.');
         next({
-          path: "/login",
+          path: '/login',
           query: { redirect: to.fullPath }, // Store the intended destination
         });
       } else if (requiresAuth && user) {
@@ -130,8 +138,9 @@ router.beforeEach(async (to, _from, next) => {
       }
 
       // Resolve the promise once the onAuthStateChanged callback is executed
-      resolve(); 
+      resolve();
     });
   });
 });
+
 export default router
