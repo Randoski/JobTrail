@@ -5,7 +5,7 @@ import LandingPage from './views/LandingPage.vue'
 import Dashboard from './views/Dashboard.vue'
 import JobBoard from './views/JobBoard.vue'
 import AddJob from './views/AddJob.vue'
-import Company from './views/Company.vue'
+import Job from './views/Job.vue'
 import Login from './views/Login.vue'
 import SignUp from './views/SignUp.vue'
 import ForgotPassword from './views/ForgotPassword.vue'
@@ -64,23 +64,24 @@ const routes: RouteRecordRaw[] = [
   },
 
   {
-    path: '/company',
-    name: 'Company',
-    component: Company,
+    path: '/job',
+    name: 'Job',
+    component: Job,
+    // props: true,
     meta: { requiresAuth: true },
   },
 
 
-  // Delete
   {
     path: '/profile',
     name: 'Profile',
     component: Profile,
     meta: { requiresAuth: true },
-
+    
   },
- 
   
+  
+  // Delete
   {
     path: '/new-convert',
     name: 'NewConvert',

@@ -128,7 +128,9 @@
                   <td
                     class="px-6 py-4 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap"
                   >
-                    <a href="#" class="text-pry hover:text-pry">View</a>
+                    <router-link to="/job" class="text-pry hover:text-pry">
+                      View
+                    </router-link>
                   </td>
                 </tr>
               </tbody>
