@@ -135,6 +135,83 @@
                 </tr>
               </tbody>
             </table>
+
+            <!-- Filtered Table -->
+
+            <table v-else class="min-w-full">
+              <thead>
+                <tr>
+                  <th
+                    class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase bg-gray-100 border-b border-gray-200"
+                  >
+                    Company
+                  </th>
+                  <th
+                    class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase bg-gray-100 border-b border-gray-200"
+                  >
+                    Role
+                  </th>
+                  <th
+                    class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase bg-gray-100 border-b border-gray-200"
+                  >
+                    Stage
+                  </th>
+                  <th
+                    class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase bg-gray-100 border-b border-gray-200"
+                  >
+                    Level
+                  </th>
+                  <th class="px-6 py-3 bg-gray-100 border-b border-gray-200" />
+                </tr>
+              </thead>
+              <tbody class="bg-white">
+                <tr v-for="job in filteredJobs" :key="job.id">
+                  <td class="py-4 border-b border-gray-200 whitespace-nowrap">
+                    <!-- Company Name -->
+                    <div class="ml-4">
+                      <div class="ml-2 text-sm font-medium leading-5 text-gray-900">
+                        {{ job.companyName }}
+                      </div>
+                    </div>
+                  </td>
+
+                  <!-- Role  -->
+                  <td class="px-6 py-4 border-b border-gray-200 whitespace-nowrap">
+                    <div class="text-sm leading-5 text-gray-900">
+                      {{ job.role }}
+                    </div>
+                  </td>
+
+                  <!-- Stage -->
+                  <td class="px-6 py-4 border-b border-gray-200 whitespace-nowrap">
+                    <span
+                      class="inline-flex px-2 text-xs font-semibold leading-5 rounded-full"
+                      :class="[
+                        getStage(job.stage).textColor,
+                        getStage(job.stage).bgColor,
+                      ]"
+                    >
+                      {{ job.stage }}
+                    </span>
+                  </td>
+
+                  <!-- Salary -->
+                  <td
+                    class="px-6 py-4 text-sm leading-5 text-gray-500 border-b border-gray-200 whitespace-nowrap"
+                  >
+                    {{ job.level }}
+                  </td>
+
+                  <td
+                    class="px-6 py-4 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap"
+                  >
+                    <router-link to="/job" class="text-pry hover:text-pry">
+                      View
+                    </router-link>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
@@ -225,6 +302,15 @@ export default {
     },
   },
   computed: {
+    // Filter jobs based on selected stage and level
+    filteredJobs() {
+      return this.jobs.filter((job) => {
+        const stageMatch = this.stage === "All" || job.stage === this.stage;
+        const levelMatch = this.level === "All" || job.level === this.level;
+        return stageMatch && levelMatch;
+      });
+    },
+    // Sorting Jobs to show them alphabetically based on company's name
     sortedJobs() {
       return this.jobs.slice().sort((a, b) => {
         const companyA = a.companyName.toLowerCase();
