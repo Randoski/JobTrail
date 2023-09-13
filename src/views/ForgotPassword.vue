@@ -15,7 +15,7 @@
           <input
             v-model="email"
             type="email"
-            class="block w-full mt-1 border-gray-200 rounded-md focus:border-pry focus:ring focus:ring-opacity-40 focus:ring-pry"
+            class="block w-full mt-1 border-gray-200 rounded-md focus:border-pry"
           />
         </label>
 

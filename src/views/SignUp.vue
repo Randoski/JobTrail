@@ -15,7 +15,7 @@
           <input
             v-model="email"
             type="email"
-            class="block w-full mt-1 border-gray-200 rounded-md focus:border-pry focus:ring focus:ring-opacity-40 focus:ring-pry"
+            class="block w-full mt-1 border-gray-200 rounded-md focus:border-pry"
           />
         </label>
 
@@ -24,14 +24,14 @@
           <input
             v-model="password"
             type="password"
-            class="block w-full mt-1 border-gray-200 rounded-md focus:border-pry focus:ring focus:ring-opacity-40 focus:ring-pry"
+            class="block w-full mt-1 border-gray-200 rounded-md focus:border-pry"
           />
         </label>
 
         <div class="flex items-center justify-between mt-4">
           <router-link
             to="login"
-            class="mx-2 text-sm text-gray-600 hover:text-pry rounded-md focus:border-pry focus:ring focus:ring-opacity-40 focus:ring-indigo-500"
+            class="mx-2 text-sm text-gray-600 hover:text-pry rounded-md focus:border-pry"
             >Already have an account?</router-link
           >
         </div>

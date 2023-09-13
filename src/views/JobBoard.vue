@@ -58,7 +58,7 @@
                   <input
                     v-model="companyName"
                     type="text"
-                    class="text-sm w-full px-3 py-2 mt-2 mb-4 border-gray-400 rounded-md appearance-none focus:border-pry focus:ring focus:ring-opacity-40 focus:ring-pry"
+                    class="text-sm w-full px-3 py-2 mt-2 mb-4 border-gray-400 rounded-md appearance-none focus:border-pry"
                   />
 
                   <!-- Role -->
@@ -66,14 +66,14 @@
                   <input
                     v-model="role"
                     type="text"
-                    class="text-sm w-full px-3 py-2 mt-2 mb-4 border-gray-400 rounded-md appearance-none focus:border-pry focus:ring focus:ring-opacity-40 focus:ring-pry"
+                    class="text-sm w-full px-3 py-2 mt-2 mb-4 border-gray-400 rounded-md appearance-none focus:border-pry"
                   />
 
                   <!-- Level-->
                   <label class="text-xs">Level</label>
                   <select
                     v-model="level"
-                    class="cursor-pointer text-sm w-full px-3 py-2 mt-2 mb-4 border-gray-400 rounded-md appearance-none focus:border-pry focus:ring focus:ring-opacity-40 focus:ring-pry"
+                    class="cursor-pointer text-sm w-full px-3 py-2 mt-2 mb-4 border-gray-400 rounded-md appearance-none focus:border-pry"
                   >
                     <option value="" disabled>Select a level</option>
                     <option v-for="level in levels" :key="level" :value="level">
@@ -86,7 +86,7 @@
                   <label class="text-xs">Stage</label>
                   <select
                     v-model="stage"
-                    class="cursor-pointer text-sm w-full px-3 py-2 mt-2 mb-4 border-gray-400 rounded-md appearance-none focus:border-pry focus:ring focus:ring-opacity-40 focus:ring-pry"
+                    class="cursor-pointer text-sm w-full px-3 py-2 mt-2 mb-4 border-gray-400 rounded-md appearance-none focus:border-pry"
                   >
                     <option value="" disabled>Select a stage</option>
                     <option v-for="stage in stages" :key="stage" :value="stage">

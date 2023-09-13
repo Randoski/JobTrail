@@ -138,7 +138,7 @@
                 <!-- Display if there is nothing to be displayed after filtering -->
                 <template v-else>
                   <tr>
-                    <td :colspan="5" class="py-4 text-center text-gray-500">
+                    <td :colspan="5" class="py-4 text-center text-gray-500 text-sm">
                       There is no job to display for this category.
                     </td>
                   </tr>
@@ -228,7 +228,7 @@
                 <!-- Display if there is nothing to be displayed after filtering -->
                 <template v-else>
                   <tr>
-                    <td :colspan="5" class="py-4 text-center text-gray-500">
+                    <td :colspan="5" class="py-4 text-center text-gray-500 text-sm">
                       There is no job to display for this category.
                     </td>
                   </tr>
