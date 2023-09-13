@@ -45,7 +45,8 @@
         </span>
 
         <input
-          placeholder="Search"
+          placeholder="Search by Company Name"
+          v-model="companyNameFilter"
           class="block w-full py-2 pl-8 pr-6 text-sm text-gray-700 placeholder-gray-400 bg-white border border-b border-gray-400 appearance-none focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none"
         />
       </div>
@@ -250,6 +251,7 @@ export default {
       loading: true,
       stage: "All",
       level: "All",
+      companyNameFilter: "",
       stageLength: {
         All: 0,
       },
@@ -345,7 +347,10 @@ export default {
       return this.jobs.filter((job) => {
         const stageMatch = this.stage === "All" || job.stage === this.stage;
         const levelMatch = this.level === "All" || job.level === this.level;
-        return stageMatch && levelMatch;
+        const companyMatch = job.companyName
+          .toLowerCase()
+          .includes(this.companyNameFilter.toLowerCase());
+        return stageMatch && levelMatch && companyMatch;
       });
     },
     // Sorting Jobs to show them alphabetically based on company's name
