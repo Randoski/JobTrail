@@ -11,13 +11,11 @@
             v-model="stage"
             class="cursor-pointer block w-full h-full px-4 py-2 pr-8 leading-tight text-gray-700 bg-white border border-gray-400 appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
           >
-            <option value="All">
-              All stages
-              <span>{{ stageLength }}</span>
-            </option>
+            <option value="All">All stages</option>
+            <!-- <option value="All">All stages ({{ stageLength.All }})</option> -->
             <option v-for="stage in stages" :key="stage" :value="stage">
               {{ stage }}
-              {{ stageLength }}
+              <span> {{ stageLength[stage] }}</span>
             </option>
           </select>
         </div>
@@ -86,53 +84,64 @@
                   <th class="px-6 py-3 bg-gray-100 border-b border-gray-200" />
                 </tr>
               </thead>
-
+              <!-- Display All jobs -->
               <tbody class="bg-white">
-                <tr v-for="job in sortedJobs" :key="job.id">
-                  <td class="py-4 border-b border-gray-200 whitespace-nowrap">
-                    <!-- Company Name -->
-                    <div class="ml-4">
-                      <div class="ml-2 text-sm font-medium leading-5 text-gray-900">
-                        {{ job.companyName }}
+                <template v-if="jobs.length > 0">
+                  <tr v-for="job in sortedJobs" :key="job.id">
+                    <td class="py-4 border-b border-gray-200 whitespace-nowrap">
+                      <!-- Company Name -->
+                      <div class="ml-4">
+                        <div class="ml-2 text-sm font-medium leading-5 text-gray-900">
+                          {{ job.companyName }}
+                        </div>
                       </div>
-                    </div>
-                  </td>
+                    </td>
 
-                  <!-- Role  -->
-                  <td class="px-6 py-4 border-b border-gray-200 whitespace-nowrap">
-                    <div class="text-sm leading-5 text-gray-900">
-                      {{ job.role }}
-                    </div>
-                  </td>
+                    <!-- Role  -->
+                    <td class="px-6 py-4 border-b border-gray-200 whitespace-nowrap">
+                      <div class="text-sm leading-5 text-gray-900">
+                        {{ job.role }}
+                      </div>
+                    </td>
 
-                  <!-- Stage -->
-                  <td class="px-6 py-4 border-b border-gray-200 whitespace-nowrap">
-                    <span
-                      class="inline-flex px-2 text-xs font-semibold leading-5 rounded-full"
-                      :class="[
-                        getStage(job.stage).textColor,
-                        getStage(job.stage).bgColor,
-                      ]"
+                    <!-- Stage -->
+                    <td class="px-6 py-4 border-b border-gray-200 whitespace-nowrap">
+                      <span
+                        class="inline-flex px-2 text-xs font-semibold leading-5 rounded-full"
+                        :class="[
+                          getStage(job.stage).textColor,
+                          getStage(job.stage).bgColor,
+                        ]"
+                      >
+                        {{ job.stage }}
+                      </span>
+                    </td>
+
+                    <!-- Salary -->
+                    <td
+                      class="px-6 py-4 text-sm leading-5 text-gray-500 border-b border-gray-200 whitespace-nowrap"
                     >
-                      {{ job.stage }}
-                    </span>
-                  </td>
+                      {{ job.level }}
+                    </td>
 
-                  <!-- Salary -->
-                  <td
-                    class="px-6 py-4 text-sm leading-5 text-gray-500 border-b border-gray-200 whitespace-nowrap"
-                  >
-                    {{ job.level }}
-                  </td>
+                    <td
+                      class="px-6 py-4 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap"
+                    >
+                      <router-link to="/job" class="text-pry hover:text-pry">
+                        View
+                      </router-link>
+                    </td>
+                  </tr>
+                </template>
 
-                  <td
-                    class="px-6 py-4 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap"
-                  >
-                    <router-link to="/job" class="text-pry hover:text-pry">
-                      View
-                    </router-link>
-                  </td>
-                </tr>
+                <!-- Display if there is nothing to be displayed after filtering -->
+                <template v-else>
+                  <tr>
+                    <td :colspan="5" class="py-4 text-center text-gray-500">
+                      There is no job to display for this category.
+                    </td>
+                  </tr>
+                </template>
               </tbody>
             </table>
 
@@ -164,52 +173,65 @@
                   <th class="px-6 py-3 bg-gray-100 border-b border-gray-200" />
                 </tr>
               </thead>
+
               <tbody class="bg-white">
-                <tr v-for="job in filteredJobs" :key="job.id">
-                  <td class="py-4 border-b border-gray-200 whitespace-nowrap">
-                    <!-- Company Name -->
-                    <div class="ml-4">
-                      <div class="ml-2 text-sm font-medium leading-5 text-gray-900">
-                        {{ job.companyName }}
+                <!-- Display if there are Items after filtering -->
+                <template v-if="filteredJobs.length > 0">
+                  <tr v-for="job in filteredJobs" :key="job.id">
+                    <td class="py-4 border-b border-gray-200 whitespace-nowrap">
+                      <!-- Company Name -->
+                      <div class="ml-4">
+                        <div class="ml-2 text-sm font-medium leading-5 text-gray-900">
+                          {{ job.companyName }}
+                        </div>
                       </div>
-                    </div>
-                  </td>
+                    </td>
 
-                  <!-- Role  -->
-                  <td class="px-6 py-4 border-b border-gray-200 whitespace-nowrap">
-                    <div class="text-sm leading-5 text-gray-900">
-                      {{ job.role }}
-                    </div>
-                  </td>
+                    <!-- Role  -->
+                    <td class="px-6 py-4 border-b border-gray-200 whitespace-nowrap">
+                      <div class="text-sm leading-5 text-gray-900">
+                        {{ job.role }}
+                      </div>
+                    </td>
 
-                  <!-- Stage -->
-                  <td class="px-6 py-4 border-b border-gray-200 whitespace-nowrap">
-                    <span
-                      class="inline-flex px-2 text-xs font-semibold leading-5 rounded-full"
-                      :class="[
-                        getStage(job.stage).textColor,
-                        getStage(job.stage).bgColor,
-                      ]"
+                    <!-- Stage -->
+                    <td class="px-6 py-4 border-b border-gray-200 whitespace-nowrap">
+                      <span
+                        class="inline-flex px-2 text-xs font-semibold leading-5 rounded-full"
+                        :class="[
+                          getStage(job.stage).textColor,
+                          getStage(job.stage).bgColor,
+                        ]"
+                      >
+                        {{ job.stage }}
+                      </span>
+                    </td>
+
+                    <!-- Salary -->
+                    <td
+                      class="px-6 py-4 text-sm leading-5 text-gray-500 border-b border-gray-200 whitespace-nowrap"
                     >
-                      {{ job.stage }}
-                    </span>
-                  </td>
+                      {{ job.level }}
+                    </td>
 
-                  <!-- Salary -->
-                  <td
-                    class="px-6 py-4 text-sm leading-5 text-gray-500 border-b border-gray-200 whitespace-nowrap"
-                  >
-                    {{ job.level }}
-                  </td>
+                    <td
+                      class="px-6 py-4 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap"
+                    >
+                      <router-link to="/job" class="text-pry hover:text-pry">
+                        View
+                      </router-link>
+                    </td>
+                  </tr>
+                </template>
 
-                  <td
-                    class="px-6 py-4 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap"
-                  >
-                    <router-link to="/job" class="text-pry hover:text-pry">
-                      View
-                    </router-link>
-                  </td>
-                </tr>
+                <!-- Display if there is nothing to be displayed after filtering -->
+                <template v-else>
+                  <tr>
+                    <td :colspan="5" class="py-4 text-center text-gray-500">
+                      There is no job to display for this category.
+                    </td>
+                  </tr>
+                </template>
               </tbody>
             </table>
           </div>
@@ -228,7 +250,9 @@ export default {
       loading: true,
       stage: "All",
       level: "All",
-      stageLength: 0,
+      stageLength: {
+        All: 0,
+      },
       jobs: [],
       stages: ["Wishlist", "Applied", "Interview", "Offer", "Rejected"],
       levels: [
@@ -244,7 +268,6 @@ export default {
       ],
     };
   },
-
   methods: {
     // Display Jobs in table
     displayJobs() {
@@ -252,13 +275,28 @@ export default {
 
       onSnapshot(jobCollection, (querySnapshot) => {
         const jobData = [];
+        const stageLength = {
+          All: 0, // Initialize the All stage count to 0
+        };
+
         querySnapshot.forEach((doc) => {
-          jobData.push({
+          const job = {
             id: doc.id,
             ...doc.data(),
-          });
+          };
+          jobData.push(job);
+
+          // Update the stage count
+          if (stageLength[job.stage] === undefined) {
+            stageLength[job.stage] = 1;
+          } else {
+            stageLength[job.stage]++;
+          }
         });
+
+        // Update the data properties
         this.jobs = jobData;
+        this.stageLength = stageLength;
         this.loading = false;
       });
     },
@@ -326,6 +364,7 @@ export default {
       });
     },
   },
+
   created() {
     this.displayJobs();
   },
