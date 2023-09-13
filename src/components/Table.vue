@@ -11,7 +11,7 @@
             v-model="stage"
             class="cursor-pointer block w-full h-full px-4 py-2 pr-8 leading-tight text-gray-700 bg-white border border-gray-400 appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
           >
-            <option value="All">All stages</option>
+            <option value="All">Stages</option>
             <!-- <option value="All">All stages ({{ stageLength.All }})</option> -->
             <option v-for="stage in stages" :key="stage" :value="stage">
               {{ stage }}
@@ -26,7 +26,7 @@
             v-model="level"
             class="cursor-pointer block w-full h-full px-4 py-2 pr-8 leading-tight text-gray-700 bg-white border border-gray-400 appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
           >
-            <option value="All">All Levels</option>
+            <option value="All">Levels</option>
             <option v-for="level in levels" :key="level" :value="level">
               {{ level }}
             </option>
@@ -353,9 +353,10 @@ export default {
         return stageMatch && levelMatch && companyMatch;
       });
     },
+
     // Sorting Jobs to show them alphabetically based on company's name
     sortedJobs() {
-      return this.jobs.slice().sort((a, b) => {
+      return this.filteredJobs.slice().sort((a, b) => {
         const companyA = a.companyName.toLowerCase();
         const companyB = b.companyName.toLowerCase();
 
