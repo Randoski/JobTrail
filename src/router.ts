@@ -9,12 +9,8 @@ import Job from './views/Job.vue'
 import Login from './views/Login.vue'
 import SignUp from './views/SignUp.vue'
 import ForgotPassword from './views/ForgotPassword.vue'
+import ExploreJobs from './views/ExploreJobs.vue'
 
-// Delete
-import AddNewConvert from './views/AddNewConvert.vue'
-import Profile from './views/Profile.vue'
-import NewConvert from './views/NewConvert.vue'
-import Forms  from './views/Forms.vue'
 
 
 const routes: RouteRecordRaw[] = [
@@ -73,36 +69,13 @@ const routes: RouteRecordRaw[] = [
 
 
   {
-    path: '/profile',
-    name: 'Profile',
-    component: Profile,
+    path: '/explore-jobs',
+    name: 'ExploreJobs',
+    component: ExploreJobs,
     meta: { requiresAuth: true },
     
   },
   
-  
-  // Delete
-  {
-    path: '/new-convert',
-    name: 'NewConvert',
-    component: NewConvert,
-  },
-  
-  
-  {
-    path: '/add-new-convert',
-    name: 'AddNewConvert',
-    component: AddNewConvert,
-  },
-
-  {
-    path: "/forms",
-    name: "Forms",
-    component: Forms,
-  }, 
-  
- 
-   
 ]
 
 const router = createRouter({

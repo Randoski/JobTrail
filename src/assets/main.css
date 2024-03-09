@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap');
-
+@import url();
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -18,4 +17,11 @@
 
 ::-webkit-scrollbar-thumb:hover{
   background: #718096;
+}
+
+body {
+  font-family: "Outfit", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
 }

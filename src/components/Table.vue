@@ -1,15 +1,14 @@
 <template>
   <div>
-    <h2 class="text-xl leading-tight mt-8 text-gray-700">Jobs Saved</h2>
 
     <!-- Filter -->
-    <div class="flex flex-col mt-3 sm:flex-row">
+    <div class="flex flex-col mt-8 sm:flex-row">
       <div class="flex">
         <!-- Stages -->
         <div class="relative">
           <select
             v-model="stage"
-            class="cursor-pointer block w-full h-full px-4 py-2 pr-8 leading-tight text-gray-700 bg-white border border-gray-400 appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
+            class="cursor-pointer block w-full h-full px-4 py-2 pr-8 leading-tight text-text bg-white border border-gray-200 appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
           >
             <option value="All">Stages</option>
             <!-- <option value="All">All stages ({{ stageLength.All }})</option> -->
@@ -24,7 +23,7 @@
         <div class="relative">
           <select
             v-model="level"
-            class="cursor-pointer block w-full h-full px-4 py-2 pr-8 leading-tight text-gray-700 bg-white border border-gray-400 appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
+            class="cursor-pointer block w-full h-full px-4 py-2 pr-8 leading-tight text-text bg-white border border-gray-200 appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
           >
             <option value="All">Levels</option>
             <option v-for="level in levels" :key="level" :value="level">
@@ -47,7 +46,7 @@
         <input
           placeholder="Search by Company Name"
           v-model="companyNameFilter"
-          class="block w-full py-2 pl-8 pr-6 text-sm text-gray-700 placeholder-gray-400 bg-white border border-b border-gray-400 appearance-none focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none"
+          class="block w-full py-2 pl-8 pr-6 text-sm text-text placeholder-gray-400 bg-white border border-b border-gray-200 appearance-none focus:bg-white focus:placeholder-gray-300 focus:text-gray-700 focus:outline-none"
         />
       </div>
     </div>
@@ -63,7 +62,7 @@
               <thead>
                 <tr>
                   <th
-                    class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase bg-gray-100 border-b border-gray-200"
+                    class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200"
                   >
                     Company
                   </th>
@@ -85,6 +84,7 @@
                   <th class="px-6 py-3 bg-gray-100 border-b border-gray-200" />
                 </tr>
               </thead>
+
               <!-- Display All jobs -->
               <tbody class="bg-white">
                 <template v-if="jobs.length > 0">

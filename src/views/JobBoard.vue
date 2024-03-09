@@ -2,7 +2,7 @@
   <div>
     <!-- Heading and Add button -->
     <div class="flex flex-col md:flex-row md:justify-between">
-      <p class="text-3xl font-2 text-gray-700 mb-4 md:mb-0 md:mr-4">Job Board</p>
+      <h3 class="text-xl font-medium text-gray-700 mb-4 md:mb-0 md:mr-4">Job Board</h3>
 
       <button
         @click="open = true"
