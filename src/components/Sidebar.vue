@@ -106,11 +106,11 @@
           <span class="mx-4">Explore Jobs</span>
         </router-link>
 
-        <!-- New Convert -->
+        <!-- Settings -->
         <router-link
           class="flex items-center px-6 py-2 mt-4 duration-200 border-l-4"
-          :class="[$route.name === 'NewConvert' ? activeClass : inactiveClass]"
-          to="/new-convert"
+          :class="[$route.name === 'Settings' ? activeClass : inactiveClass]"
+          to="/settings"
           @click="handleNavLinkClick"
         >
           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -123,7 +123,7 @@
               clip-rule="evenodd"
             />
           </svg>
-          <span class="mx-4">New Convert</span>
+          <span class="mx-4">Settings</span>
         </router-link>
       </nav>
     </div>

@@ -65,6 +65,7 @@ export default {
       password: "",
     };
   },
+  
   methods: {
     login() {
       const auth = getAuth();

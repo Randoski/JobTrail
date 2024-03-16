@@ -10,6 +10,7 @@ import Login from './views/Login.vue'
 import SignUp from './views/SignUp.vue'
 import ForgotPassword from './views/ForgotPassword.vue'
 import ExploreJobs from './views/ExploreJobs.vue'
+import Settings from './views/Settings.vue'
 
 
 
@@ -72,6 +73,14 @@ const routes: RouteRecordRaw[] = [
     path: '/explore-jobs',
     name: 'ExploreJobs',
     component: ExploreJobs,
+    meta: { requiresAuth: true },
+    
+  },
+
+  {
+    path: '/settings',
+    name: 'Settings',
+    component: Settings,
     meta: { requiresAuth: true },
     
   },
