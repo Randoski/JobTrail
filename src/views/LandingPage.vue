@@ -3,7 +3,7 @@
     <NavBar />
     <Hero />
     <Hero3 />
-    <Hero4 />
+    <!-- <Hero4 /> -->
     <Hero2 />
     <Footer />
   </div>

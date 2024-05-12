@@ -138,7 +138,7 @@ import { useRoute } from "vue-router";
 const { isOpen, closeSidebar } = useSidebar();
 const activeClass = ref("bg-gray-700 bg-opacity-25 text-gray-100 border-sec");
 const inactiveClass = ref(
-  "border-gray-100 text-gray-100 hover:bg-gray-600 hover:bg-opacity-25 hover:text-white"
+  "border-transparent text-gray-100 hover:bg-gray-600 hover:bg-opacity-25 hover:text-white"
 );
 
 const route = useRoute();

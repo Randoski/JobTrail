@@ -2,11 +2,12 @@
   <div class="flex items-center justify-center h-screen px-6 bg-gray-200">
     <div class="w-full max-w-sm p-6 bg-white rounded-md shadow-md">
       <div class="flex items-center justify-center">
-        <img
-          src="../assets/images/dcc-logo.png"
-          class="w-20 h-20"
-          alt="Dominion city Logo"
-        />
+        
+        <router-link
+          to="/"
+          class="text-pry self-center text-xl font-bold whitespace-nowrap"
+          >TryJam</router-link
+        >
       </div>
 
       <form class="mt-4" @submit.prevent="signUp">

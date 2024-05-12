@@ -7,14 +7,14 @@
     </div>
 
     <!-- Tabs with scrollbar -->
-    <div class="flex mt-4 overflow-x-auto space-x-4">
+    <div class="flex mt-10 overflow-x-auto space-x-4">
       <div
         v-for="(tab, index) in tabs"
         :key="index"
         @click="activeTab = index"
         :class="[
-          'cursor-pointer pr-4 py-2 rounded-lg whitespace-nowrap font-bold ',
-          activeTab === index ? 'text-pry  underline' : 'text-gray-500 hover:text-pry ',
+          'cursor-pointer py-2 rounded-lg whitespace-nowrap font-bold ',
+          activeTab === index ? 'text-white bg-pry px-4'  : 'text-gray-500 bg-gray-200 px-4 hover:bg-pry hover:text-white',
         ]"
       >
         {{ tab.label }}
