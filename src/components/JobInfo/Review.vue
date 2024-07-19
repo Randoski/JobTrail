@@ -1,65 +1,38 @@
 <template>
   <div>
-    <div class="mt-8">
-      <div class="mt-4">
-        <div class="p-6 bg-white">
-          <form>
-            <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
-              <!-- Company Name -->
-              <div @click="activateForm">
-                <label class="text-gray-700 text-sm font-bold">Review</label>
-                <textarea
-                  class="w-full mt-2 rounded-md focus:border-pry"
-                  :class="{
-                    'border-transparent': isReadOnly,
-                    'pl-0': isReadOnly,
-                    'mt-0': isReadOnly,
-                  }"
-                  :readonly="isReadOnly"
-                  v-model="companyName"
-                ></textarea>
-              </div>
-            </div>
 
-            <div class="flex justify-end mt-4">
-              <!-- Edit Button -->
-              <button
-                class="px-4 py-2 mr-2 text-text bg-gray-200 rounded-md hover:bg-gray-100 focus:outline-none"
-                @click.prevent="toggleEdit"
-              >
-                {{ isReadOnly ? "Edit" : "Cancel" }}
-              </button>
+    <div class="mt-4 border-t border-gray-100">
+      <div class="divide-y divide-gray-100">
 
-              <!-- Update Button -->
-              <button
-                class="px-4 py-2 text-gray-200 bg-pry rounded-md focus:outline-none"
-                :disabled="isReadOnly"
-              >
-                Update
-              </button>
-            </div>
-          </form>
+        <!-- Review -->
+        <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+          <p class="text-sm font-medium leading-6 text-gray-900">Review</p>
+          <div class="mt-2 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+
+            <ul role="list" class="divide-y divide-gray-100 rounded-md border border-gray-200 pl-5">
+
+              <li class="flex items-center justify-between py-4 pr-5 text-sm leading-6">
+                <div class="flex w-0 flex-1 items-center">
+
+                  <!-- Review Body -->
+                  <div class="flex min-w-0 flex-1 gap-2">
+                    <p class="font-medium">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit,
+                      cumque itaque? Possimus placeat voluptatem atque? Tenetur nesciunt dolores doloremque consectetur
+                      modi nemo ducimus, numquam pariatur reiciendis alias dolorem itaque, est aliquam! Voluptatum
+                      pariatur molestiae porro, nesciunt sequi debitis quas delectus quidem? Praesentium omnis quis non
+                      soluta reprehenderit atque deserunt! Explicabo vero at doloribus in debitis magni aliquid
+                      provident eaque tempore voluptatibus ipsum suscipit consectetur accusamus molestiae, possimus quod
+                      repellendus quibusdam sed commodi illo autem laborum sunt! Soluta laborum provident a excepturi
+                      magnam cumque omnis quidem? Cumque, alias eveniet? Odit ab ea consequatur facere qui ullam
+                      accusantium ipsa dolorum, voluptatem alias!</p>
+
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </template>
-
-<script>
-export default {
-  data() {
-    return {
-      isReadOnly: true,
-      companyName: "Sample Company Name",
-    };
-  },
-  methods: {
-    toggleEdit() {
-      this.isReadOnly = !this.isReadOnly;
-    },
-    activateForm() {
-      this.isReadOnly = false;
-    },
-  },
-};
-</script>

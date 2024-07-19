@@ -32,7 +32,7 @@
           </p>
           <router-link
             to="sign-up"
-            class="inline-flex justify-center items-center py-2.5 px-5 text-base font-medium text-center text-white rounded-lg bg-pry hover:bg-blue-800 focus:ring-4 focus:ring-blue-300"
+            class="inline-flex justify-center items-center py-2.5 px-5 text-base font-medium text-center text-white rounded-lg bg-pry hover:bg-pryHover focus:ring-4 focus:ring-blue-300"
           >
             Register
             <svg
@@ -81,7 +81,7 @@
             </p>
             <router-link
             to="/sign-up"
-              class="text-pry hover:text-blue-800 font-medium text-lg inline-flex items-center"
+              class="text-pry hover:text-pryHover font-medium text-lg inline-flex items-center"
               >Try it Out
               <svg
                 class="w-3.5 h-3.5 ms-2 rtl:rotate-180"

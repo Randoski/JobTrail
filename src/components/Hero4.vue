@@ -18,7 +18,7 @@
           </p>
           <router-link
             to="sign-up"
-            class="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-pry hover:bg-blue-800"
+            class="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-pry hover:bg-pryHover"
           >
             Get started
             <svg

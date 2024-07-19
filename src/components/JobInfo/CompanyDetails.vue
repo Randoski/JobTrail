@@ -1,138 +1,128 @@
 <template>
   <div>
-    <div class="mt-8">
-      <div class="mt-4">
-        <div class="p-6 bg-white">
-          <form>
-            <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
-              <!-- Company Name -->
-              <div @click="activateForm">
-                <label class="text-gray-700 text-sm font-bold">Company Name</label>
-                <input
-                  class="w-full mt-2 rounded-md focus:border-pry"
-                  :class="{
-                    'border-transparent': isReadOnly,
-                    'pl-0': isReadOnly,
-                    'mt-0': isReadOnly,
-                  }"
-                  type="text"
-                  :readonly="isReadOnly"
-                  v-model="companyName"
-                />
-              </div>
 
-              <!-- Category -->
-              <div @click="activateForm">
-                <label class="text-gray-700 text-sm font-bold">Stage</label>
-                <select
-                  class="w-full mt-2 rounded-md border-gray-500 focus:border-pry"
-                  :class="{
-                    'border-transparent': isReadOnly,
-                    'pl-0': isReadOnly,
-                    'mt-0': isReadOnly,
-                  }"
-                  type="text"
-                  :readonly="isReadOnly"
-                  v-model="stage"
-                >
-                  <option v-for="stage in stages" :key="stage" :value="stage">
-                    {{ stage }}
-                  </option>
-                </select>
-              </div>
+    <div class="mt-4 border-t border-gray-100">
+      <div class="divide-y divide-gray-100">
 
-              <!-- Website -->
-              <div @click="activateForm">
-                <label class="text-gray-700 text-sm font-bold">Website</label>
-                <input
-                  class="w-full mt-2 rounded-md focus:border-pry"
-                  :class="{
-                    'border-transparent': isReadOnly,
-                    'pl-0': isReadOnly,
-                    'mt-0': isReadOnly,
-                  }"
-                  type="text"
-                  :readonly="isReadOnly"
-                  v-model="website"
-                />
-              </div>
-
-              <!-- Country -->
-              <div @click="activateForm">
-                <label class="text-gray-700 text-sm font-bold">Country</label>
-                <input
-                  class="w-full mt-2 rounded-md focus:border-pry"
-                  :class="{
-                    'border-transparent': isReadOnly,
-                    'pl-0': isReadOnly,
-                    'mt-0': isReadOnly,
-                  }"
-                  type="text"
-                  :readonly="isReadOnly"
-                  v-model="country"
-                />
-              </div>
-
-              <!-- State -->
-              <div @click="activateForm">
-                <label class="text-gray-700 text-sm font-bold">State</label>
-                <input
-                  class="w-full mt-2 rounded-md border-gray-00 focus:border-pry"
-                  :class="{
-                    'border-transparent': isReadOnly,
-                    'pl-0': isReadOnly,
-                    'mt-0': isReadOnly,
-                  }"
-                  type="text"
-                  :readonly="isReadOnly"
-                  v-model="state"
-                />
-              </div>
-            </div>
-
-            <div class="flex justify-end mt-4">
-              <!-- Edit Button -->
-              <button
-                class="px-4 py-2 mr-2 text-text bg-gray-200 rounded-md hover:bg-gray-100 focus:outline-none"
-                @click.prevent="toggleEdit"
-              >
-                {{ isReadOnly ? "Edit" : "Cancel" }}
-              </button>
-
-              <!-- Update Button -->
-              <button
-                class="px-4 py-2 text-gray-200 bg-pry rounded-md focus:outline-none"
-                :disabled="isReadOnly"
-              >
-                Update
-              </button>
-            </div>
-          </form>
+        <!-- Company Name-->
+        <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+          <p class="text-sm font-medium leading-6 text-gray-900">Company Name</p>
+          <p class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+            NaHere Limited
+          </p>
         </div>
+
+        <!-- Job Role -->
+        <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+          <p class="text-sm font-medium leading-6 text-gray-900">Role</p>
+          <p class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+            Backend Developer
+          </p>
+        </div>
+
+        <!-- Stage -->
+        <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+          <p class="text-sm font-medium leading-6 text-gray-900">Stage</p>
+          <p class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+            Applied
+          </p>
+        </div>
+
+        <!-- Level -->
+        <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+          <p class="text-sm font-medium leading-6 text-gray-900">Level</p>
+          <p class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+            Mid - Level
+          </p>
+        </div>
+
+        <!-- Salary Expectation -->
+        <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+          <p class="text-sm font-medium leading-6 text-gray-900">Salary expectation</p>
+          <p class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+            $120,000
+          </p>
+        </div>
+
+        <!-- Work Structure -->
+        <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+          <p class="text-sm font-medium leading-6 text-gray-900">Work Structure</p>
+          <p class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+            On-site
+          </p>
+        </div>
+
+        <!-- Country -->
+        <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+          <p class="text-sm font-medium leading-6 text-gray-900">Country</p>
+          <p class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+            Nigeria
+          </p>
+        </div>
+
+        <!-- State -->
+        <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+          <p class="text-sm font-medium leading-6 text-gray-900">State</p>
+          <p class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+            Lagos
+          </p>
+        </div>
+
+        <!-- Website -->
+        <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+          <p class="text-sm font-medium leading-6 text-gray-900">Website</p>
+          <a href="https://nahere.com" target="_blank" class="mt-1 text-sm leading-6 text-pry hover:text-pryHover sm:col-span-2 sm:mt-0">
+            www.nahere.com
+          </a>
+        </div>
+
+        <!-- Contacts -->
+        <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+          <p class="text-sm font-medium leading-6 text-gray-900">Contacts</p>
+          <p class="mt-2 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+
+            <!-- Contact List -->
+          <ul role="list" class="divide-y divide-gray-100 rounded-md border border-gray-200 pl-5">
+
+            <!-- Contact -->
+            <li class="flex items-center justify-between py-4 pr-5 text-sm leading-6">
+              <div class="flex w-0 flex-1 items-center">
+                <div class="flex min-w-0 flex-1 gap-2 ">
+                  <!-- Contact Name -->
+                  <span class="truncate font-medium">Randy Monye</span>
+                  <!-- Contact Role -->
+                  <span class="flex-shrink-0 text-gray-400 truncate ml-1">Tech Lead</span>
+                </div>
+              </div>
+
+              <!-- Contact Email -->
+              <div class="ml-4 flex-shrink-0">
+                <a href="mailto:monyerandy15@gmail.com" target="_blank" class="font-medium text-pry hover:text-pryHover">monyerandy15@gmail.com</a>
+              </div>
+            </li>
+
+            <!-- Contact -->
+            <li class="flex items-center justify-between py-4 pr-5 text-sm leading-6">
+              <div class="flex w-0 flex-1 items-center">
+                <div class="flex min-w-0 flex-1 gap-2 ">
+                  <!-- Contact Name -->
+                  <span class="truncate font-medium">Randy Monye</span>
+                  <!-- Contact Role -->
+                  <span class="flex-shrink-0 text-gray-400 truncate ml-1">Tech Lead</span>
+                </div>
+              </div>
+
+              <!-- Contact Email -->
+              <div class="ml-4 flex-shrink-0">
+                <a href="mailto:monyerandy15@gmail.com" target="_blank" class="font-medium text-pry hover:text-pryHover">monyerandy15@gmail.com</a>
+              </div>
+            </li>
+
+          </ul>
+          </p>
+        </div>
+
       </div>
     </div>
   </div>
 </template>
-
-<script>
-export default {
-  data() {
-    return {
-      isReadOnly: true,
-      companyName: "Sample Company Name",
-      website: "www.samplewebsite.com",
-      country: "Sample Country",
-      state: "Sample State",
-      stages: ["Wishlist", "Applied", "Interview", "Offer", "Rejected"],
-    };
-  },
-  methods: {
-    toggleEdit() {
-      this.isReadOnly = !this.isReadOnly;
-    },
-    activateForm() {
-      this.isReadOnly = false;
-    },
-  },
-};
-</script>

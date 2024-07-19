@@ -21,24 +21,7 @@ const routes: RouteRecordRaw[] = [
     component: LandingPage,
     meta: { layout: 'empty' },
   },
-  {
-    path: '/login',
-    name: 'Login',
-    component: Login,
-    meta: { layout: 'empty' },
-  },
-  {
-    path: '/sign-up',
-    name: 'SignUp',
-    component: SignUp,
-    meta: { layout: 'empty' },
-  },
-  {
-    path: '/forgot-password',
-    name: 'ForgotPassword',
-    component: ForgotPassword,
-    meta: { layout: 'empty' },
-  },
+  
   {
     path: '/dashboard',
     name: 'Dashboard',
@@ -52,6 +35,28 @@ const routes: RouteRecordRaw[] = [
     component: JobBoard,
     meta: { requiresAuth: true },
   },
+
+  {
+    path: '/login',
+    name: 'Login',
+    component: Login,
+    meta: { layout: 'empty' },
+  },
+
+  {
+    path: '/sign-up',
+    name: 'SignUp',
+    component: SignUp,
+    meta: { layout: 'empty' },
+  },
+
+  {
+    path: '/forgot-password',
+    name: 'ForgotPassword',
+    component: ForgotPassword,
+    meta: { layout: 'empty' },
+  },
+
 
   {
     path: '/add-job',
@@ -68,13 +73,12 @@ const routes: RouteRecordRaw[] = [
     meta: { requiresAuth: true },
   },
 
-
   {
     path: '/explore-jobs',
     name: 'ExploreJobs',
     component: ExploreJobs,
     meta: { requiresAuth: true },
-    
+
   },
 
   {
@@ -82,9 +86,9 @@ const routes: RouteRecordRaw[] = [
     name: 'Settings',
     component: Settings,
     meta: { requiresAuth: true },
-    
+
   },
-  
+
 ]
 
 const router = createRouter({
