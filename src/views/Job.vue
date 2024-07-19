@@ -2,23 +2,19 @@
   <div>
     <!-- Page Heading -->
     <div class="flex flex-col md:flex-row md:justify-between">
-      <h3 class="text-xl font-medium text-gray-700 mb-4 md:mb-0 md:mr-4">Job Board</h3>
+      <h3 class="text-xl font-medium text-gray-700 mb-4 md:mb-0 md:mr-4">NaHere Limited</h3>
     </div>
 
     <!-- Tabs with scrollbar -->
     <div class="flex mt-4 overflow-x-auto hide-scrollbar overflow-y-scroll space-x-4">
-      <div
-        v-for="(tab, index) in tabs"
-        :key="index"
-        @click="activeTab = index"
-        :class="[
-          'cursor-pointer pr-4 py-2 rounded-lg whitespace-nowrap font-medium ',
-          activeTab === index ? 'text-pry' : 'text-gray-500 hover:text-pry ',
-        ]"
-      >
+      <div v-for="(tab, index) in tabs" :key="index" @click="activeTab = index" :class="[
+        'cursor-pointer pr-4 py-2 rounded-lg whitespace-nowrap font-medium ',
+        activeTab === index ? 'text-pry' : 'text-gray-500 hover:text-pry ',
+      ]">
         {{ tab.label }}
       </div>
     </div>
+
 
     <!-- Tab Content -->
     <div class="mt-6 hide-scrollbar overflow-y-scroll">
@@ -78,7 +74,7 @@ export default {
     };
   },
   methods: {
-    update() {},
+    update() { },
   },
 };
 </script>

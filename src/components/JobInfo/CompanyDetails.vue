@@ -71,9 +71,19 @@
         <!-- Website -->
         <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
           <p class="text-sm font-medium leading-6 text-gray-900">Website</p>
-          <a href="https://nahere.com" target="_blank" class="mt-1 text-sm leading-6 text-pry hover:text-pryHover sm:col-span-2 sm:mt-0">
+          <a href="https://nahere.com" target="_blank"
+            class="mt-1 text-sm leading-6 text-pry hover:text-pryHover sm:col-span-2 sm:mt-0 flex items-center space-x-2">
             www.nahere.com
+            <span>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                class="size-2.5 ml-1 mt-1">
+                <path fill-rule="evenodd"
+                  d="M8.25 3.75H19.5a.75.75 0 0 1 .75.75v11.25a.75.75 0 0 1-1.5 0V6.31L5.03 20.03a.75.75 0 0 1-1.06-1.06L17.69 5.25H8.25a.75.75 0 0 1 0-1.5Z"
+                  clip-rule="evenodd" />
+              </svg>
+            </span>
           </a>
+
         </div>
 
         <!-- Contacts -->
@@ -97,7 +107,16 @@
 
               <!-- Contact Email -->
               <div class="ml-4 flex-shrink-0">
-                <a href="mailto:monyerandy15@gmail.com" target="_blank" class="font-medium text-pry hover:text-pryHover">monyerandy15@gmail.com</a>
+                <a href="mailto:monyerandy15@gmail.com" target="_blank"
+                  class="font-medium text-pry hover:text-pryHover flex items-center space-x-2">monyerandy15@gmail.com
+                  <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                      class="size-2.5 ml-1 mt-1">
+                      <path fill-rule="evenodd"
+                        d="M8.25 3.75H19.5a.75.75 0 0 1 .75.75v11.25a.75.75 0 0 1-1.5 0V6.31L5.03 20.03a.75.75 0 0 1-1.06-1.06L17.69 5.25H8.25a.75.75 0 0 1 0-1.5Z"
+                        clip-rule="evenodd" />
+                    </svg>
+                  </span></a>
               </div>
             </li>
 
@@ -114,9 +133,20 @@
 
               <!-- Contact Email -->
               <div class="ml-4 flex-shrink-0">
-                <a href="mailto:monyerandy15@gmail.com" target="_blank" class="font-medium text-pry hover:text-pryHover">monyerandy15@gmail.com</a>
+                <a href="mailto:monyerandy15@gmail.com" target="_blank"
+                  class="font-medium text-pry hover:text-pryHover flex items-center space-x-2">monyerandy15@gmail.com
+                  <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                      class="size-2.5 ml-1 mt-1">
+                      <path fill-rule="evenodd"
+                        d="M8.25 3.75H19.5a.75.75 0 0 1 .75.75v11.25a.75.75 0 0 1-1.5 0V6.31L5.03 20.03a.75.75 0 0 1-1.06-1.06L17.69 5.25H8.25a.75.75 0 0 1 0-1.5Z"
+                        clip-rule="evenodd" />
+                    </svg>
+                  </span></a>
               </div>
             </li>
+
+       
 
           </ul>
           </p>
