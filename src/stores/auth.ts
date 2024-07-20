@@ -1,22 +1,27 @@
 import { defineStore } from 'pinia';
-import { getAuth, signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import { getAuth, signInWithEmailAndPassword, signOut, User } from 'firebase/auth';
 import router from '../router'; // adjust the path as necessary
 
+interface State {
+    user: User | null;
+    error: string | null;
+}
+
 export const useAuthStore = defineStore('auth', {
-    state: () => ({
+    state: (): State => ({
         user: null,
         error: null,
     }),
 
     actions: {
-        async login(email, password) {
+        async login(email: string, password: string) {
             const auth = getAuth();
             try {
                 const userCredential = await signInWithEmailAndPassword(auth, email, password);
                 this.user = userCredential.user;
                 this.error = null;
                 router.push('/dashboard');
-            } catch (error) {
+            } catch (error: any) {
                 this.error = error.message;
             }
         },
@@ -27,7 +32,7 @@ export const useAuthStore = defineStore('auth', {
                 await signOut(auth);
                 this.user = null;
                 router.push('/login');
-            } catch (error) {
+            } catch (error: any) {
                 this.error = error.message;
             }
         },
