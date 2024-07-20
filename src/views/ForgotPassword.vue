@@ -4,7 +4,6 @@
       <div class="flex items-center justify-center">
         <router-link to="/" class="text-pry self-center text-2xl font-bold whitespace-nowrap">JobTrail</router-link>
       </div>
-
       <form class="mt-4" @submit.prevent="forgotPassword">
         <label class="block">
           <span class="text-sm text-gray-700">Email</span>
