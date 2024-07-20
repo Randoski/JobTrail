@@ -1,6 +1,5 @@
 <template>
   <div>
-
     <!-- Filter -->
     <div class="flex flex-col mt-8 sm:flex-row">
       <div class="flex">
@@ -89,7 +88,7 @@
               <tbody class="bg-white">
                 <template v-if="jobs.length > 0">
                   <tr v-for="job in sortedJobs" :key="job.id">
-                    <td class="py-4 border-b border-gray-200 whitespace-nowrap">
+                    <td class="py-4 border-b border-gray-200 whitespace-nowrap ">
                       <!-- Company Name -->
                       <div class="ml-4">
                         <div class="ml-2 text-sm font-medium leading-5 text-gray-900">
@@ -132,6 +131,7 @@
                         View
                       </router-link>
                     </td>
+
                   </tr>
                 </template>
 
@@ -218,7 +218,7 @@
                     <td
                       class="px-6 py-4 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap"
                     >
-                      <router-link to="/job" class="text-pry hover:text-pry">
+                      <router-link to="/job" class="text-pry hover:text-pryHover">
                         View
                       </router-link>
                     </td>
@@ -313,22 +313,27 @@ export default {
           bgColorClass = "bg-blue-100";
           textColorClass = "text-blue-800";
           break;
+
         case "Applied":
           bgColorClass = "bg-yellow-200";
           textColorClass = "text-yellow-800";
           break;
+
         case "Interview":
           bgColorClass = "bg-orange-200";
           textColorClass = "text-orange-800";
           break;
+
         case "Offer":
           bgColorClass = "bg-green-100";
           textColorClass = "text-green-800";
           break;
+
         case "Rejected":
           bgColorClass = "bg-red-100";
           textColorClass = "text-red-800";
           break;
+          
         default:
           bgColorClass = "";
           textColorClass = "";

@@ -12,9 +12,10 @@
           <p class="text-lg font-normal text-gray-500 mb-6">
             Get access to Jobs that matches your skill sets,talent, experience and other preferences.
           </p>
-
-          <router-link to="sign-up"
-            class="inline-flex justify-center items-center py-2.5 px-5 text-base font-medium text-center text-white rounded-lg bg-pry hover:bg-blue-800 focus:ring-4 focus:ring-blue-300">
+          <router-link
+            to="sign-up"
+            class="inline-flex justify-center items-center py-2.5 px-5 text-base font-medium text-center text-white rounded-lg bg-pry hover:bg-pryHover focus:ring-4 focus:ring-blue-300"
+          >
             Register
             <svg class="w-3.5 h-3.5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
               fill="none" viewBox="0 0 14 10">
@@ -37,13 +38,24 @@
               Keep track with the tasks assigned to you by potential
               Employers, ensuring you meet deadlines.
             </p>
-
-            <router-link to="/sign-up"
-              class="text-pry hover:text-blue-800 font-medium text-lg inline-flex items-center">Try it Out
-              <svg class="w-3.5 h-3.5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                fill="none" viewBox="0 0 14 10">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M1 5h12m0 0L9 1m4 4L9 9" />
+            <router-link
+            to="/sign-up"
+              class="text-pry hover:text-pryHover font-medium text-lg inline-flex items-center"
+              >Try it Out
+              <svg
+                class="w-3.5 h-3.5 ms-2 rtl:rotate-180"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 14 10"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M1 5h12m0 0L9 1m4 4L9 9"
+                />
               </svg>
             </router-link>
           </div>

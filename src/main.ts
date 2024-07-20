@@ -1,3 +1,4 @@
+import { createPinia } from 'pinia';
 import { createApp } from 'vue';
 import App from './App.vue';
 import router from './router';
@@ -6,10 +7,11 @@ import DashboardLayout from './components/DashboardLayout.vue';
 import EmptyLayout from './components/EmptyLayout.vue';
 import { initializeApp } from 'firebase/app';
 import { getFirestore } from "firebase/firestore";
-// import store from "./store";
+import { useAuthStore } from './stores/auth';
 
 const app = createApp(App);
 
+// FIREBASE
 // Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyC8oY1pp_IGI9WBlTjGh0QDu9FMFTxSVNg",
@@ -21,22 +23,22 @@ const firebaseConfig = {
   appId: "1:852335180708:web:26f2e8eed74050aca51f31"
 
 };
-
 // Initialize Firebase
 const firebaseApp = initializeApp(firebaseConfig);
-
 // Initialize Firestore
 const db = getFirestore(firebaseApp);
-console.log(db);
-
 // Provide the Firestore instance to the app
 app.provide("firestore", db);
 
+
+
 app.component('DefaultLayout', DashboardLayout);
 app.component('EmptyLayout', EmptyLayout);
-
 app.use(router);
-// app.use(store);
+app.use(createPinia());
 app.mount('#app');
+
+const authStore = useAuthStore();
+authStore.initializeAuth();
 
 export { db };

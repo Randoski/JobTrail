@@ -12,9 +12,10 @@
           <p class="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl ">
             Effortlessly manage your job applications, stay organized, and stay ahead in your job search journey.
           </p>
-
-          <router-link to="sign-up"
-            class="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-pry hover:bg-blue-800">
+          <router-link
+          to="sign-up"
+            class="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-pry hover:bg-pryHover"
+          >
             Get started
             <svg class="w-5 h-5 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd"

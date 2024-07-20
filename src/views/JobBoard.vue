@@ -6,7 +6,7 @@
 
       <button
         @click="open = true"
-        class="px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-pry rounded-md hover:bg-pry marker:focus:outline-none focus:bg-pry"
+        class="px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-pry rounded-md hover:bg-pryHover marker:focus:outline-none focus:bg-pry"
       >
         Add job
       </button>
@@ -99,7 +99,7 @@
                 <div class="flex justify-end">
                   <button
                     type="submit"
-                    class="p-3 px-6 py-3 text-white bg-pry rounded focus:outline-none"
+                    class="p-3 px-6 py-3 text-white bg-pry hover:bg-pryHover rounded focus:outline-none"
                   >
                     Save
                   </button>
@@ -117,9 +117,9 @@
 
 <script>
 import { ref } from "vue";
-import Table from "../components/Table.vue";
 import { collection, addDoc, onSnapshot } from "firebase/firestore";
 import { db } from "../main";
+import Table from "../components/Table.vue";
 
 export default {
   components: {
@@ -131,7 +131,9 @@ export default {
       open: ref(false),
       stages: ["Wishlist", "Applied", "Interview", "Offer", "Rejected"],
       levels: [
-        "Intern",
+        "SIWES",
+        "Intern / Internship Trainee",
+        "Graduate Trainee",
         "Junior / Entry Level",
         "Mid-Level",
         "Senior-level",

@@ -79,17 +79,17 @@ const { isOpen } = useSidebar();
           >
             <a
               href="#"
-              class="block px-4 py-2 text-sm text-gray-700 hover:bg-pry hover:text-white"
+              class="block px-4 py-2 text-sm text-gray-700 hover:bg-pryHover hover:text-white"
               >Profile</a
             >
             <a
               href="#"
-              class="block px-4 py-2 text-sm text-gray-700 hover:bg-pry hover:text-white"
+              class="block px-4 py-2 text-sm text-gray-700 hover:bg-pryHover hover:text-white"
               >Products</a
             >
             <router-link
               to="/"
-              class="block px-4 py-2 text-sm text-gray-700 hover:bg-pry hover:text-white"
+              class="block px-4 py-2 text-sm text-gray-700 hover:bg-pryHover hover:text-white"
             >
               Log out
             </router-link>
