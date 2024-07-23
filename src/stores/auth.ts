@@ -14,27 +14,29 @@ export const useAuthStore = defineStore('auth', {
     }),
 
     actions: {
-        async login(email: string, password: string) {
+        login(email: string, password: string) {
             const auth = getAuth();
-            try {
-                const userCredential = await signInWithEmailAndPassword(auth, email, password);
-                this.user = userCredential.user;
-                this.error = null;
-                router.push('/dashboard');
-            } catch (error: any) {
-                this.error = error.message;
-            }
+            signInWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    this.user = userCredential.user;
+                    this.error = null;
+                    router.push('/dashboard');
+                })
+                .catch((error: any) => {
+                    this.error = error.message;
+                });
         },
 
-        async logout() {
+        logout() {
             const auth = getAuth();
-            try {
-                await signOut(auth);
-                this.user = null;
-                router.push('/login');
-            } catch (error: any) {
-                this.error = error.message;
-            }
+            signOut(auth)
+                .then(() => {
+                    this.user = null;
+                    router.push('/login');
+                })
+                .catch((error: any) => {
+                    this.error = error.message;
+                });
         },
 
         initializeAuth() {

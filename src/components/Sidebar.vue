@@ -14,8 +14,8 @@
       <nav class="mt-12">
 
         <!-- Dashboard -->
-        <router-link class="flex items-center px-6 py-2 mt-4 duration-200 border-l-4 "
-          :class="[$route.name === 'Dashboard' ? activeClass : inactiveClass]" to="/dashboard"
+        <router-link class="flex items-center px-6 py-2 mt-4 duration-200 border-l-4"
+          :class="[isActive('Dashboard') ? activeClass : inactiveClass]" to="/dashboard"
           @click="handleNavLinkClick">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5">
             <path fill-rule="evenodd"
@@ -30,7 +30,7 @@
 
         <!-- Job Boards -->
         <router-link class="flex items-center px-6 py-2 mt-4 duration-200 border-l-4"
-          :class="[$route.name === 'JobBoard' ? activeClass : inactiveClass]" to="/job-board"
+          :class="[isActive('JobBoard', 'Job') ? activeClass : inactiveClass]" to="/job-board"
           @click="handleNavLinkClick">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5">
             <path fill-rule="evenodd"
@@ -44,7 +44,7 @@
 
         <!-- Explore Jobs -->
         <router-link class="flex items-center px-6 py-2 mt-4 duration-200 border-l-4"
-          :class="[$route.name === 'ExploreJobs' ? activeClass : inactiveClass]" to="/explore-jobs"
+          :class="[isActive('ExploreJobs') ? activeClass : inactiveClass]" to="/explore-jobs"
           @click="handleNavLinkClick">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5">
             <path fill-rule="evenodd"
@@ -57,7 +57,7 @@
 
         <!-- Settings -->
         <router-link class="flex items-center px-6 py-2 mt-4 duration-200 border-l-4"
-          :class="[$route.name === 'Settings' ? activeClass : inactiveClass]" to="/settings"
+          :class="[isActive('Settings') ? activeClass : inactiveClass]" to="/settings"
           @click="handleNavLinkClick">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5">
             <path fill-rule="evenodd"
@@ -78,13 +78,16 @@ import { useRoute } from "vue-router";
 
 const { isOpen, closeSidebar } = useSidebar();
 const activeClass = ref("bg-gray-700 bg-opacity-25 text-gray-100 border-white");
-const inactiveClass = ref("text-gray-100 border-transparent hover:bg-gray-600 hover:bg-opacity-25 hover:text-white"
-);
+const inactiveClass = ref("text-gray-100 border-transparent hover:bg-gray-600 hover:bg-opacity-25 hover:text-white");
 
 const route = useRoute();
 
 const handleNavLinkClick = () => {
   // Close the sidebar when a navigation link is clicked
   closeSidebar();
+};
+
+const isActive = (...routeNames) => {
+  return routeNames.includes(route.name);
 };
 </script>

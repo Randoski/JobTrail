@@ -1,29 +1,24 @@
 <template>
   <div>
+
     <!-- Filter -->
     <div class="flex flex-col mt-8 sm:flex-row">
       <div class="flex">
+
         <!-- Stages -->
         <div class="relative">
-          <select
-            v-model="stage"
-            class="cursor-pointer block w-full h-full px-4 py-2 pr-8 leading-tight text-text bg-white border border-gray-200 appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
-          >
+          <select v-model="stage" class="custom-select">
             <option value="All">Stages</option>
-            <!-- <option value="All">All stages ({{ stageLength.All }})</option> -->
             <option v-for="stage in stages" :key="stage" :value="stage">
-              {{ stage }}
-              <span> {{ stageLength[stage] }}</span>
+              {{ stage }} <span>{{ stageLength[stage] ||  ""}}</span>
             </option>
           </select>
         </div>
 
         <!-- Level -->
         <div class="relative">
-          <select
-            v-model="level"
-            class="cursor-pointer block w-full h-full px-4 py-2 pr-8 leading-tight text-text bg-white border border-gray-200 appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
-          >
+          <select v-model="level"
+            class="cursor-pointer block w-full h-full px-4 py-2 pr-8 leading-tight text-text bg-white border border-gray-200 appearance-none focus:outline-none focus:bg-white focus:border-gray-500">
             <option value="All">Levels</option>
             <option v-for="level in levels" :key="level" :value="level">
               {{ level }}
@@ -37,16 +32,12 @@
         <span class="absolute inset-y-0 left-0 flex items-center pl-2">
           <svg viewBox="0 0 24 24" class="w-4 h-4 text-gray-500 fill-current">
             <path
-              d="M10 4a6 6 0 100 12 6 6 0 000-12zm-8 6a8 8 0 1114.32 4.906l5.387 5.387a1 1 0 01-1.414 1.414l-5.387-5.387A8 8 0 012 10z"
-            />
+              d="M10 4a6 6 0 100 12 6 6 0 000-12zm-8 6a8 8 0 1114.32 4.906l5.387 5.387a1 1 0 01-1.414 1.414l-5.387-5.387A8 8 0 012 10z" />
           </svg>
         </span>
 
-        <input
-          placeholder="Search by Company Name"
-          v-model="companyNameFilter"
-          class="block w-full py-2 pl-8 pr-6 text-sm text-text placeholder-gray-400 bg-white border border-b border-gray-200 appearance-none focus:bg-white focus:placeholder-gray-300 focus:text-gray-700 focus:outline-none"
-        />
+        <input placeholder="Search by Company Name" v-model="companyNameFilter"
+          class="block w-full py-2 pl-8 pr-6 text-sm text-text placeholder-gray-400 bg-white border border-b border-gray-200 appearance-none focus:bg-white focus:placeholder-gray-300 focus:text-gray-700 focus:outline-none" />
       </div>
     </div>
 
@@ -54,30 +45,25 @@
       <div class="flex flex-col mt-6">
         <div class="py-2 -my-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
           <div
-            class="inline-block min-w-full overflow-hidden align-middle border-b border-gray-200 shadow sm:rounded-lg"
-          >
+            class="inline-block min-w-full overflow-hidden align-middle border-b border-gray-200 shadow sm:rounded-lg">
             <div v-if="loading">Loading...</div>
             <table v-else class="min-w-full">
               <thead>
                 <tr>
                   <th
-                    class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200"
-                  >
+                    class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200">
                     Company
                   </th>
                   <th
-                    class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase bg-gray-100 border-b border-gray-200"
-                  >
+                    class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase bg-gray-100 border-b border-gray-200">
                     Role
                   </th>
                   <th
-                    class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase bg-gray-100 border-b border-gray-200"
-                  >
+                    class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase bg-gray-100 border-b border-gray-200">
                     Stage
                   </th>
                   <th
-                    class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase bg-gray-100 border-b border-gray-200"
-                  >
+                    class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase bg-gray-100 border-b border-gray-200">
                     Level
                   </th>
                   <th class="px-6 py-3 bg-gray-100 border-b border-gray-200" />
@@ -88,7 +74,7 @@
               <tbody class="bg-white">
                 <template v-if="jobs.length > 0">
                   <tr v-for="job in sortedJobs" :key="job.id">
-                    <td class="py-4 border-b border-gray-200 whitespace-nowrap ">
+                    <td class="py-4 border-b border-gray-200 whitespace-nowrap">
                       <!-- Company Name -->
                       <div class="ml-4">
                         <div class="ml-2 text-sm font-medium leading-5 text-gray-900">
@@ -106,32 +92,25 @@
 
                     <!-- Stage -->
                     <td class="px-6 py-4 border-b border-gray-200 whitespace-nowrap">
-                      <span
-                        class="inline-flex px-2 text-xs font-semibold leading-5 rounded-full"
-                        :class="[
-                          getStage(job.stage).textColor,
-                          getStage(job.stage).bgColor,
-                        ]"
-                      >
+                      <span class="inline-flex px-2 text-xs font-semibold leading-5 rounded-full" :class="[
+                        getStage(job.stage).textColor,
+                        getStage(job.stage).bgColor,
+                      ]">
                         {{ job.stage }}
                       </span>
                     </td>
 
                     <!-- Salary -->
-                    <td
-                      class="px-6 py-4 text-sm leading-5 text-gray-500 border-b border-gray-200 whitespace-nowrap"
-                    >
+                    <td class="px-6 py-4 text-sm leading-5 text-gray-500 border-b border-gray-200 whitespace-nowrap">
                       {{ job.level }}
                     </td>
 
                     <td
-                      class="px-6 py-4 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap"
-                    >
+                      class="px-6 py-4 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap">
                       <router-link to="/job" class="text-pry hover:text-pry">
                         View
                       </router-link>
                     </td>
-
                   </tr>
                 </template>
 
@@ -152,23 +131,19 @@
               <thead>
                 <tr>
                   <th
-                    class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase bg-gray-100 border-b border-gray-200"
-                  >
+                    class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase bg-gray-100 border-b border-gray-200">
                     Company
                   </th>
                   <th
-                    class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase bg-gray-100 border-b border-gray-200"
-                  >
+                    class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase bg-gray-100 border-b border-gray-200">
                     Role
                   </th>
                   <th
-                    class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase bg-gray-100 border-b border-gray-200"
-                  >
+                    class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase bg-gray-100 border-b border-gray-200">
                     Stage
                   </th>
                   <th
-                    class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase bg-gray-100 border-b border-gray-200"
-                  >
+                    class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase bg-gray-100 border-b border-gray-200">
                     Level
                   </th>
                   <th class="px-6 py-3 bg-gray-100 border-b border-gray-200" />
@@ -197,28 +172,22 @@
 
                     <!-- Stage -->
                     <td class="px-6 py-4 border-b border-gray-200 whitespace-nowrap">
-                      <span
-                        class="inline-flex px-2 text-xs font-semibold leading-5 rounded-full"
-                        :class="[
-                          getStage(job.stage).textColor,
-                          getStage(job.stage).bgColor,
-                        ]"
-                      >
+                      <span class="inline-flex px-2 text-xs font-semibold leading-5 rounded-full" :class="[
+                        getStage(job.stage).textColor,
+                        getStage(job.stage).bgColor,
+                      ]">
                         {{ job.stage }}
                       </span>
                     </td>
 
                     <!-- Salary -->
-                    <td
-                      class="px-6 py-4 text-sm leading-5 text-gray-500 border-b border-gray-200 whitespace-nowrap"
-                    >
+                    <td class="px-6 py-4 text-sm leading-5 text-gray-500 border-b border-gray-200 whitespace-nowrap">
                       {{ job.level }}
                     </td>
 
                     <td
-                      class="px-6 py-4 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap"
-                    >
-                      <router-link to="/job" class="text-pry hover:text-pryHover">
+                      class="px-6 py-4 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap">
+                      <router-link to="/job" class="text-pry hover:text-pry">
                         View
                       </router-link>
                     </td>
@@ -313,27 +282,22 @@ export default {
           bgColorClass = "bg-blue-100";
           textColorClass = "text-blue-800";
           break;
-
         case "Applied":
           bgColorClass = "bg-yellow-200";
           textColorClass = "text-yellow-800";
           break;
-
         case "Interview":
           bgColorClass = "bg-orange-200";
           textColorClass = "text-orange-800";
           break;
-
         case "Offer":
           bgColorClass = "bg-green-100";
           textColorClass = "text-green-800";
           break;
-
         case "Rejected":
           bgColorClass = "bg-red-100";
           textColorClass = "text-red-800";
           break;
-          
         default:
           bgColorClass = "";
           textColorClass = "";
@@ -381,3 +345,39 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.custom-select {
+  appearance: none;
+  background-color: white;
+  border: 1px solid #d1d5db;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 0.375rem;
+  outline: none;
+  transition: all 0.2s;
+  position: relative;
+  padding-right: 2.5rem;
+}
+
+.custom-select:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
+}
+
+.custom-select::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 0.75rem;
+  width: 0.75rem;
+  height: 0.75rem;
+  /* background-image: url('data:image/svg+xml;utf8,<svg fill="none" stroke="%23d1d5db" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 9l-7 7-7-7"></path></svg>'); */
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.custom-select:hover {
+  border-color: #2563eb;
+}
+</style>

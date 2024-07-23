@@ -11,6 +11,7 @@ import SignUp from './views/SignUp.vue'
 import ForgotPassword from './views/ForgotPassword.vue'
 import ExploreJobs from './views/ExploreJobs.vue'
 import Settings from './views/Settings.vue'
+import Error from './views/Error.vue'; 
 
 
 
@@ -87,6 +88,13 @@ const routes: RouteRecordRaw[] = [
     component: Settings,
     meta: { requiresAuth: true },
 
+  },
+
+  {
+    path: '/:catchAll(.*)',  
+    name: 'Error',
+    component: Error,
+    meta: { layout: 'empty' },
   },
 
 ]
